@@ -4,9 +4,13 @@ class GuideCard extends Component {
   render() {
     return (
       <div className="guide-card">
-        <p>Name</p>
-        <p>Created by: user</p>
-        <p>Expertise</p>
+        <p>{this.props.info.title}</p>
+        <p>{this.props.info.date}</p>
+        <p>{this.props.info.time}</p>
+        <p>{this.props.info.time}</p>
+        <p>{this.props.info.time}</p>
+        <p>{this.props.info.time}</p>
+        <p>{this.props.info.time}</p>
       </div>
     );
   }
