@@ -1,5 +1,26 @@
 import React, { Component } from 'react';
+import axios from 'axios'
 
+let body = {
+  "requests": [
+    {
+      "image": {
+        "source": {
+          "imageUri": "http://newsimg.bbc.co.uk/media/images/45162000/jpg/_45162744_-2.jpg" //image URL
+        }
+      },
+      "features": [
+        {
+          "type": "TEXT_DETECTION",
+          "maxResults": 1
+        }
+      ]
+    }
+  ]
+}
+
+axios.post('https://vision.googleapis.com/v1/images:annotate?key=AIzaSyAOESSYVTHM5byC5-lzPdKX_6dbfTJwnq4', body)
+  .then((response) => console.log(response));
 class Scan extends Component {
   render() {
     return (
