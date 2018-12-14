@@ -32,7 +32,12 @@ class GuidesList extends Component {
     const id  = e.target.attributes.id.value;
     GuideService.deleteGuide(id)
     .then((result) => {
-      console.log('deleted')
+      const guides = this.state.guides;
+      guides.splice(guides.findIndex(v => v._id === result._id), 1)
+
+    this.setState({
+      guides,
+    })
     })
   }
    
@@ -46,9 +51,9 @@ class GuidesList extends Component {
     return (
       <section className="guide-list">
         {this.state.guides.map((guide, index) => {
-          return <div key={index} ><GuideCard key ={guide._id} info = {guide}> 
-                
-                </GuideCard>
+          return <div key={index} >
+                <Link to="/guides-list/create">Create your own</Link>
+                <GuideCard key ={guide._id} info = {guide}/> 
                 <Link to={`/guides-list/edit/${guide._id}`}>Edit</Link>
                 <form onSubmit={this.onSubmit} id={guide._id}>
 
