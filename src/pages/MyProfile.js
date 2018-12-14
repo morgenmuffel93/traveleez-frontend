@@ -21,7 +21,7 @@ class Profile extends Component {
         <div className="my-guides">
           <h3 className="my-guides-title">Your guides</h3>
           <button>Create guide</button>
-            <GuideCard />
+            {/* <GuideCard /> */}
         </div>
         
       </section>
