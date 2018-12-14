@@ -1,26 +1,73 @@
 import React, { Component } from 'react';
+import GuideService from '../lib/guides-service';
+
 
 class EditGuide extends Component {
+  state = {
+    guide: {
+    title: '',
+    date: '',
+    time: '',
+    description: '',
+    location: '',
+    expertise: '',
+    duration: '',
+  },
+  isLoading: true,
+}
+
+  componentDidMount() {
+    GuideService.guideDetails(this.props.match.params.id)
+      .then((guide) => {
+        this.setState({
+          guide,
+          isLoading: false,
+        })
+      })
+  }
+
+  handleOnChange = (e) => {
+    this.setState({
+      guide: 
+      {
+        ...this.state.guide,
+        [e.target.name]: e.target.value
+      }
+    })
+  }
+
+  handleSubmit = (e) => {
+    e.preventDefault();
+    const { id } = this.props.match.params;
+    const { guide } = this.state;
+    GuideService.updateGuide(id, guide)
+    .then((result) => {
+      this.props.history.push(`/guides-list/${id}`)
+    })
+  }
+
   render() {
+    const { guide: {title, date, time, description, location, expertise, duration} } = this.state;
+
+    // if (this.state.isLoading) {
+    //   return (
+    //     <div>Loading...</div>
+    //   )
+    // }
+
     return (
-      <section className="create-edit-section">
-        <div className="create-edit-form-container">
-        <h2>Edit guide</h2>
-          <form action="" className="create-edit-form">
-            <input type="text" placeholder="Title" name="" className="create-edit-input"/>
-            <input type="text" placeholder="Date" name="" className="create-edit-input" />
-            <input type="text" placeholder="Time" name="" className="create-edit-input" />
-            <input type="text" placeholder="Description" name="" className="create-edit-input desc" />
-            <input type="text" placeholder="Location" name="" className="create-edit-input" />
-            <input type="text" placeholder="Expertise" name="" className="create-edit-input" />
-            <div className="duration-container">
-              <p>Duration:</p>
-              <input type="time" placeholder="hh" name="" className="duration-input" />
-            </div>
-            <button>Edit</button>
-          </form>
-        </div>
-      </section>
+      <div>
+        <form onSubmit={this.handleSubmit} className="create-edit-form">
+          <input type="text" value={title} name='title' onChange={this.handleOnChange} className="create-edit-input" />
+          <input type="text" value={date} name='date' onChange={this.handleOnChange} className="create-edit-input" />
+          <input type="text" value={time} name='time' onChange={this.handleOnChange} className="create-edit-input" />
+          <input type="text" value={description} name='description' onChange={this.handleOnChange} className="create-edit-input" />
+          <input type="text" value={location} name='location' onChange={this.handleOnChange} className="create-edit-input" />
+          <input type="text" value={expertise} name='expertise' onChange={this.handleOnChange} className="create-edit-input" />
+          <input type="text" value={duration} name='duration' onChange={this.handleOnChange} className="create-edit-input" />
+          <button type="submit">Update</button>
+        </form>
+      </div>
     );
   }
 }
