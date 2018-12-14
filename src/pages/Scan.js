@@ -20,7 +20,7 @@ let body = {
   ]
 }
 
-axios.post(`https://vision.googleapis.com/v1/images:annotate?key=YOURAPIKEY`, body)
+axios.post(`https://vision.googleapis.com/v1/images:annotate?key=`, body)
   .then((response) => console.log(response));
 class Scan extends Component {
   render() {
