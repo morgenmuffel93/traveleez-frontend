@@ -1,3 +1,4 @@
+
 import React, { Component } from 'react';
 import axios from 'axios'
 
@@ -19,7 +20,7 @@ let body = {
   ]
 }
 
-axios.post('https://vision.googleapis.com/v1/images:annotate?key=AIzaSyAOESSYVTHM5byC5-lzPdKX_6dbfTJwnq4', body)
+axios.post(`https://vision.googleapis.com/v1/images:annotate?key=YOURAPIKEY`, body)
   .then((response) => console.log(response));
 class Scan extends Component {
   render() {
