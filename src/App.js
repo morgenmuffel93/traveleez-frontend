@@ -17,6 +17,8 @@ import Scan from './pages/Scan'
 import Speech from './pages/Speech'
 import GuidesList from './pages/GuidesList'
 import CreateGuide from './pages/CreateGuide';
+import EditGuide from './pages/EditGuide';
+
 
 class App extends Component {
   render() {
@@ -32,8 +34,8 @@ class App extends Component {
               <PrivateRoute path="/speech" component={Speech} />
               <PrivateRoute path="/my" component={MyProfile} />
               <PrivateRoute exact path="/guides-list/create" component={CreateGuide} />
+              <PrivateRoute exact path="/guides-list/edit/:id" component={EditGuide} />
               <PrivateRoute path="/guides-list" component={GuidesList} />
-
           </Switch>
           <Footer/>
         </div>
