@@ -11,14 +11,16 @@ class CreateGuide extends Component {
     location: '',
     expertise: '',
     duration: '',
+    guideWasCreated: false,
   }
  
   onSubmit = (data) => {
 
-
     GuideService.createGuide(data)
-      .then((response) => {
-        console.log("hellooooo, its me", response)
+      .then(() => {
+        this.setState({
+          guideWasCreated: true,
+        })
       })
       .catch((error) => {
         console.log(error)
@@ -34,6 +36,10 @@ class CreateGuide extends Component {
 
   render() {
     console.log(this.state);
+    if (this.state.guideWasCreated) {
+      return <div>Created</div>
+    }
+    
     return (
       <section className="create-edit-section">
         <div className="create-edit-form-container">
