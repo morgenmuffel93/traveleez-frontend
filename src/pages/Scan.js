@@ -40,10 +40,13 @@ class Scan extends Component {
   uploadHandler = () => {
     axios.post('https://vision.googleapis.com/v1/images:annotate?key=', body)
     .then((response) => 
-      this.setState({
-        text: response.data.responses[0].fullTextAnnotation.text,
+      // this.setState({
+      //   text: response.data.responses[0].fullTextAnnotation.text,
+      // })
+
+      axios.post('https://translation.googleapis.com/language/translate/v2', data {
+
       })
-      
     )
 
 
