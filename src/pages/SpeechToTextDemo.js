@@ -12,6 +12,7 @@ class SpeechToTextDemo extends Component {
     listening: false,
     translation: '',
     readBack: '',
+    target: '',
   };
 
   componentDidMount() {
@@ -26,7 +27,7 @@ class SpeechToTextDemo extends Component {
     };
 
     const onFinalised = text => {
-      
+
       this.setState({
         finalisedText: [...this.state.finalisedText, text],
         interimText: ''
@@ -51,18 +52,18 @@ class SpeechToTextDemo extends Component {
 
   stopListening = () => {
     this.listener.stopListening();
-    this.setState({ 
+    this.setState({
       listening: false
-     });
+    });
   };
 
   translateHandler = () => {
 
     console.log('before', this.state.finalisedText[0])
     let joined = this.state.finalisedText.join('. ')
+    let googleTarget = this.state.target.replace(/-[a-z][a-z]/, '')
 
-    console.log('after', joined)
-    axios.post(`https://translation.googleapis.com/language/translate/v2?key=AIzaSyAkNyUzuGnqGuOtK-meyLLydVTPECloI14&q=${joined}&target=es`)
+    axios.post(`https://translation.googleapis.com/language/translate/v2?key=AIzaSyAkNyUzuGnqGuOtK-meyLLydVTPECloI14&q=${joined}&target=${googleTarget}`)
       .then((response) => {
         console.log(response)
         this.setState({
@@ -71,23 +72,29 @@ class SpeechToTextDemo extends Component {
       })
   }
   readOutLoud = () => {
-    axios.get(`http://api.voicerss.org/?key=ab98abe31f3a4a11bbbf68f7b9f6d334&hl=en-us&src=${this.state.finalisedText}&c=mp3&rnd=0.7265951914142883&b64=true`)
-    .then((response) => {
-      this.playSound(response)
+    axios.get(`http://api.voicerss.org/?key=ab98abe31f3a4a11bbbf68f7b9f6d334&hl=${this.state.target}&src=${this.state.finalisedText}&c=mp3&rnd=0.7265951914142883&b64=true`)
+      .then((response) => {
+        this.playSound(response)
         console.log(response.data)
         this.setState({
           readBack: response.data
         })
-        console.log("link",this.state.readBack)
-        
+        console.log("link", this.state.readBack)
+
 
       })
-   
-  // console.log(this.state.selectedFile)
-}
-    playSound = (response) => {
-      window.beeb = new Audio(response.data)
-    }
+
+    // console.log(this.state.selectedFile)
+  }
+  playSound = (response) => {
+    window.beeb = new Audio(response.data)
+  }
+
+  handleLanguage = (e) => {
+    this.setState({
+      target: e.target.value,
+    })
+  }
 
   render() {
     const { error, interimText, finalisedText, listening } = this.state;
@@ -133,7 +140,7 @@ class SpeechToTextDemo extends Component {
                 {finalisedText.map((str, index) => {
                   return (
                     <div key={index}>
-                    {str}
+                      {str}
                     </div>
                   );
                 })}
@@ -141,9 +148,15 @@ class SpeechToTextDemo extends Component {
             </div>
           </div>
           <textarea name="translated-box" cols="25" rows="10" placeholder="Translation here" value={this.state.finalisedText}></textarea>
+          <select name="language" id="" onChange={this.handleLanguage}>
+            <option disabled selected>Select language</option>
+            <option value="es-es">Spanish</option>
+            <option value="en-gb">English</option>
+            <option value="de-de">German</option>
+            <option value="ca-es">Catalan</option>
+          </select>
           <button onClick={this.translateHandler}>Translate!</button>
           <audio controls="controls" src={this.state.readBack} autoPlay="autoplay">
-
           </audio>
           <button onClick={this.readOutLoud}>ROL!</button>
         </div>
