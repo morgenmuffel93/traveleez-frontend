@@ -1,48 +1,26 @@
 import React, { Component } from 'react';
 import axios from 'axios'
 
-
-
-  // axios.post('https://vision.googleapis.com/v1/images:annotate?key=AIzaSyAOESSYVTHM5byC5-lzPdKX_6dbfTJwnq4', body)
-  // .then((response) => 
-  //   console.log('this is a response', response.data.responses[0].fullTextAnnotation.text)
-  //   )
-
-
 class Scan extends Component {
 
   state = {
     selectedFile: null,
     fileName: null,
     text: '',
+    translation: '',
     base64: '',
-  //   body : {requests: [
-  //     {
-  //       image: {
-  //         content: ""
-  //       },
-  //       features: [
-  //         {
-  //           type: "TEXT_DETECTION"
-  //         }
-  //       ]
-  //     }
-  //   ]
-  // }
   }
 
   toBase64(file, cb) {
     let reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onload = () => {
-        cb(reader.result)
+      cb(reader.result)
     };
     reader.onerror = (error) => {
-        console.log('Error: ', error);
+      console.log('Error: ', error);
     };
-}
-
-
+  }
 
   fileChangedHandler = (event) => {
     
@@ -62,8 +40,6 @@ class Scan extends Component {
             base64: base64String[1],
         })
       })
-   
-    
     })
   }
 
@@ -84,28 +60,41 @@ class Scan extends Component {
       ]
     }
     axios.post('https://vision.googleapis.com/v1/images:annotate?key=AIzaSyAkNyUzuGnqGuOtK-meyLLydVTPECloI14', body)
-    .then((response) => {
-      console.log(response)
-    })
-      // this.setState({
-      //   text: response.data.responses[0].fullTextAnnotation.text,
-      // }
-
-
-    console.log(this.state.selectedFile)
+      .then((response) => {
+        this.setState({
+          text: response.data.responses[0].fullTextAnnotation.text,
+        })
+      })
   }
 
+
+  translateHandler = () => {
+    axios.post(`https://translation.googleapis.com/language/translate/v2?key=AIzaSyAkNyUzuGnqGuOtK-meyLLydVTPECloI14&q=${this.state.text}&target=es`)
+      .then((response) => {
+        this.setState({
+          translation: response.data.data.translations[0].translatedText,
+        })
+      })
+    // console.log(this.state.selectedFile)
+  }
+
+
   render() {
-    console.log(this.state.text)
+    // console.log(this.state.text)
+
+    if (this.state.translation) {
+      return <section className="scan-section translate-section">
+        <h3>Voilà!</h3>
+        <textarea name="translated-box" cols="25" rows="10" placeholder="Translation here" value={this.state.translation}></textarea>
+      </section>
+    }
 
     if (this.state.text) {
-      return       <section className="scan-section translate-section">
-      <h3>Upload an image to translate it</h3>
-      <input type="file" onChange={this.fileChangedHandler} className="img-input" />
-      <button onClick={this.uploadHandler}>Upload!</button>
-      {/* <div className="scan-image translation-img"><img src="../images/add-image.svg" alt="scan-icon"/></div> */}
-      <textarea name="translated-box" cols="25" rows="10" placeholder="Translation here" value={this.state.text}></textarea>
-    </section>
+      return <section className="scan-section translate-section">
+        <h3>If this seems correct, click on translate and magic will happen</h3>
+        <textarea name="translated-box" cols="25" rows="10" placeholder="Translation here" value={this.state.text}></textarea>
+        <button onClick={this.translateHandler}>Translate!</button>
+      </section>
     }
 
     return (
@@ -113,11 +102,9 @@ class Scan extends Component {
         <h3>Upload an image to translate it</h3>
         <input type="file" onChange={this.fileChangedHandler} className="img-input" />
         <button onClick={this.uploadHandler}>Upload!</button>
-        {/* <div className="scan-image translation-img"><img src="../images/add-image.svg" alt="scan-icon"/></div> */}
       </section>
     );
   }
 }
 
 export default Scan;
-
