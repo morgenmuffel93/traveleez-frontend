@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import SpeechToText from 'speech-to-text'
 import SpeechToTextDemo from '../pages/SpeechToTextDemo'
 
 
@@ -9,8 +8,6 @@ class Speech extends Component {
     finalisedText: '',
     interimText: ''
   }
-
-  
 
   render() {
     return (
