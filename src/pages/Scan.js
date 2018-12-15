@@ -54,12 +54,12 @@ class Scan extends Component {
       let base64String = '';
       console.log(this.state.selectedFile)
       this.toBase64(this.state.selectedFile, (result) => {
-        let base64String = result.replace("data:image/jpeg;base64,", "")
-      
+        let base64String = result.split(",")
+        
        console.log(base64String)
        console.log(result)
         this.setState({
-            base64: base64String,
+            base64: base64String[1],
         })
       })
    
