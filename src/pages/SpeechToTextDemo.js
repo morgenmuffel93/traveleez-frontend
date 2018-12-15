@@ -41,7 +41,6 @@ class SpeechToTextDemo extends Component {
 			this.listener.startListening();
 			this.setState({ listening: true });
 		} catch (err) {
-			console.log('yoyoy');
 			console.log(err);
 		}
 	};
@@ -53,7 +52,6 @@ class SpeechToTextDemo extends Component {
 
 	render() {
 		const { error, interimText, finalisedText, listening } = this.state;
-		const { classes } = this.props;
 
 		let content;
 		if (error) {
