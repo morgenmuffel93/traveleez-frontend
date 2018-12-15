@@ -125,6 +125,7 @@ class Scan extends Component {
       <section className="scan-section translate-section">
         <h3>Upload an image to translate it</h3>
         <input type="file" onChange={this.fileChangedHandler} className="img-input" />
+        
         <button onClick={this.uploadHandler}>Upload!</button>
      
       </section>
