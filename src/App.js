@@ -10,7 +10,7 @@ import PrivateRoute from './components/PrivateRoute';
 import AnonRoute from './components/AnonRoute';
 import AuthProvider from './providers/AuthProvider';
 import Home from './pages/Home';
-import Main from './pages/Main';
+
 import Footer from './components/Footer'
 import MyProfile from './pages/MyProfile'
 import Scan from './pages/Scan'
@@ -27,7 +27,7 @@ class App extends Component {
         <div className="container">
           <Navbar />
           <Switch>
-              <PrivateRoute exact path="/" component={Main} />
+              <PrivateRoute exact path="/" component={App} />
               <AnonRoute path="/signup" component={Signup} />
               <AnonRoute path="/login" component={Login} />
               <PrivateRoute path="/scan" component={Scan} />

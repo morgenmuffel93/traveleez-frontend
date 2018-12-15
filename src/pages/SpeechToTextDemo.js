@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import SpeechToText from 'speech-to-text';
 import axios from 'axios'
 
+
 class SpeechToTextDemo extends Component {
   state = {
     error: '',
@@ -10,6 +11,7 @@ class SpeechToTextDemo extends Component {
     finalisedText: [],
     listening: false,
     translation: '',
+    readBack: '',
   };
 
   componentDidMount() {
@@ -43,7 +45,6 @@ class SpeechToTextDemo extends Component {
       this.listener.startListening();
       this.setState({ listening: true });
     } catch (err) {
-      console.log('yoyoy');
       console.log(err);
     }
   };
@@ -69,6 +70,24 @@ class SpeechToTextDemo extends Component {
         })
       })
   }
+  readOutLoud = () => {
+    axios.get(`http://api.voicerss.org/?key=ab98abe31f3a4a11bbbf68f7b9f6d334&hl=en-us&src=${this.state.finalisedText}&c=mp3&rnd=0.7265951914142883&b64=true`)
+    .then((response) => {
+      this.playSound(response)
+        console.log(response.data)
+        this.setState({
+          readBack: response.data
+        })
+        console.log("link",this.state.readBack)
+        
+
+      })
+   
+  // console.log(this.state.selectedFile)
+}
+    playSound = (response) => {
+      window.beeb = new Audio(response.data)
+    }
 
   render() {
     const { error, interimText, finalisedText, listening } = this.state;
@@ -123,6 +142,10 @@ class SpeechToTextDemo extends Component {
           </div>
           <textarea name="translated-box" cols="25" rows="10" placeholder="Translation here" value={this.state.finalisedText}></textarea>
           <button onClick={this.translateHandler}>Translate!</button>
+          <audio controls="controls" src={this.state.readBack} autoPlay="autoplay">
+
+          </audio>
+          <button onClick={this.readOutLoud}>ROL!</button>
         </div>
       );
     }
