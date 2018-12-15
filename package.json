@@ -10,6 +10,8 @@
     "react-dropzone": "^8.0.1",
     "react-router-dom": "^4.3.1",
     "react-scripts": "2.0.4",
+    "react-speech-recognition": "^1.0.7",
+    "speech-to-text": "^2.9.0",
     "superagent": "^4.0.0"
   },
   "scripts": {

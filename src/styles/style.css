@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto');
+@import url('https://fonts.googleapis.com/css?family=Shadows+Into+Light');
 
 /* ---- reset ---- */
 
@@ -164,6 +165,22 @@ footer {
 /* Scan image in the scan section */
 .translation-img {
   height: 110px;
+}
+
+/* Speech microphone */
+
+.fa {
+  color: white;
+  background: #1e2440;
+  border-radius: 50%;
+  cursor: pointer;
+  margin-top: 1rem;
+  float: right;
+  width: 2rem;
+  height: 2rem;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
 }
 
 /* My profile section */

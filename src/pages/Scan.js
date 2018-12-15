@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios'
+import { Link } from 'react-router-dom'
 
 class Scan extends Component {
 
@@ -93,12 +94,14 @@ class Scan extends Component {
         <h3>Voilà!</h3>
         <textarea name="translated-box" cols="25" rows="10" placeholder="Translation here" value={this.state.translation}></textarea>
         <select name="language" id="" onChange={this.handleLanguage}>
+        <option value="" selected="true" disabled="disabled">Select target language...</option>
           <option value="es">Spanish</option>
           <option value="en">English</option>
           <option value="de">German</option>
           <option value="ca">Catalan</option>
         </select>
         <button onClick={this.translateHandler}>Translate!</button>
+        <a href="/scan">Upload another image</a>
       </section>
     }
 
@@ -106,6 +109,7 @@ class Scan extends Component {
       return <section className="scan-section translate-section">
         <h3>If this seems correct, click on translate and magic will happen</h3>
         <select name="language" id="" onChange={this.handleLanguage}>
+          <option value="" selected="true" disabled="disabled">Select target language...</option>
           <option value="es">Spanish</option>
           <option value="en">English</option>
           <option value="de">German</option>
