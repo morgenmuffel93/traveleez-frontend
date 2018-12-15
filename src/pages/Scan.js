@@ -30,24 +30,46 @@ class Scan extends Component {
     text: '',
   }
 
+  toBase64(file, cb) {
+    let reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => {
+        cb(reader.result)
+    };
+    reader.onerror = (error) => {
+        console.log('Error: ', error);
+    };
+}
+
+
+
   fileChangedHandler = (event) => {
+    
     this.setState({
       selectedFile: event.target.files[0],
       fileName: event.target.files[0].name,
+    }, () => {
+
+      let idCardBase64 = '';
+      console.log(this.state.selectedFile)
+      this.toBase64(this.state.selectedFile, (result) => {
+       idCardBase64 = result;
+       console.log(result);
+
+      })
+   
+    
     })
   }
 
   uploadHandler = () => {
-    axios.post('https://vision.googleapis.com/v1/images:annotate?key=', body)
-    .then((response) => 
+    axios.post('https://vision.googleapis.com/v1/images:annotate?key=AIzaSyAkNyUzuGnqGuOtK-meyLLydVTPECloI14', body)
+    .then((response) => {
+      console.log(response)
+    })
       // this.setState({
       //   text: response.data.responses[0].fullTextAnnotation.text,
-      // })
-
-      axios.post('https://translation.googleapis.com/language/translate/v2', data {
-
-      })
-    )
+      // }
 
 
     console.log(this.state.selectedFile)
