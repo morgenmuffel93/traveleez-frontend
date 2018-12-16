@@ -31,11 +31,10 @@ class FormGuide extends Component {
     <input type="text" placeholder="Description" name="description" className="create-edit-input desc" onChange={this.handleChange} value={this.state.description} />
     <input type="text" placeholder="Location" name="location" className="create-edit-input" onChange={this.handleChange} value={this.state.location} />
     <input type="text" placeholder="Expertise" name="expertise" className="create-edit-input" onChange={this.handleChange} value={this.state.expertise} />
-    <div className="duration-container">
-      <p>Duration:</p>
     <input type="text" placeholder="Date" name="date" className="create-edit-input" onChange={this.handleChange} value={this.state.date} />
     <input type="text" placeholder="Time" name="time" className="create-edit-input" onChange={this.handleChange} value={this.state.time} />
-      <input type="time" placeholder="hh" name="duration" className="duration-input" onChange={this.handleChange} value={this.state.duration} />
+    <div className="duration-container">
+    <p>Duration</p><input type="time" placeholder="hh" name="duration" className="duration-input" onChange={this.handleChange} value={this.state.duration} />
     </div>
     <button type="submit">Create</button>
   </form>

@@ -16,12 +16,11 @@ class GuideApi {
   }
 
   createGuide(data) {
-      console.log("this is data", data)
     return this.apiInstance.post('/guides-list', data)
       .then((response) => {
-        console.log(response.data.response)
       })
   }
+  
   guideDetails(id) {
     return this.apiInstance.get(`/guides-list/edit/${id}`)
     .then((response) => {
@@ -30,10 +29,8 @@ class GuideApi {
   }
 
   updateGuide(id, data) {
-        console.log(data)
     return this.apiInstance.put(`/guides-list/edit/${id}`, data)
       .then((response) => {
-          console.log(response)
         return response.data
       })
   }

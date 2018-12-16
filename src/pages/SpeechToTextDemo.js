@@ -59,13 +59,11 @@ class SpeechToTextDemo extends Component {
 
   translateHandler = () => {
 
-    console.log('before', this.state.finalisedText[0])
     let joined = this.state.finalisedText.join('. ')
     let googleTarget = this.state.target.replace(/-[a-z][a-z]/, '')
 
     axios.post(`https://translation.googleapis.com/language/translate/v2?key=AIzaSyAkNyUzuGnqGuOtK-meyLLydVTPECloI14&q=${joined}&target=${googleTarget}`)
       .then((response) => {
-        console.log(response)
         this.setState({
           finalisedText: [response.data.data.translations[0].translatedText],
         })
@@ -75,16 +73,13 @@ class SpeechToTextDemo extends Component {
     axios.get(`http://api.voicerss.org/?key=ab98abe31f3a4a11bbbf68f7b9f6d334&hl=${this.state.target}&src=${this.state.finalisedText}&c=mp3&rnd=0.7265951914142883&b64=true`)
       .then((response) => {
         this.playSound(response)
-        console.log(response.data)
         this.setState({
           readBack: response.data
         })
-        console.log("link", this.state.readBack)
 
 
       })
 
-    // console.log(this.state.selectedFile)
   }
   playSound = (response) => {
     window.beeb = new Audio(response.data)
@@ -93,6 +88,13 @@ class SpeechToTextDemo extends Component {
   handleLanguage = (e) => {
     this.setState({
       target: e.target.value,
+    })
+  }
+
+  handleWriting = (e) => {
+    e.preventDefault();
+    this.setState({
+      finalisedText: e.target.value,
     })
   }
 
@@ -110,66 +112,64 @@ class SpeechToTextDemo extends Component {
       if (listening) {
         buttonForListening = (
           <button onClick={() => this.stopListening()}>
-            Stop Listening
+            Stop Listening &#127908;
           </button>
         );
       } else {
         buttonForListening = (
           <button onClick={() => this.startListening()}>
-            Start Listening
+            Start Listening &#127908;
           </button>
         );
       }
       content = (
 
-        <div>
-          <p>Status: {listening ? 'listening...' : 'finished listening'}
-            {buttonForListening}
-          </p>
-          <p>
-            Current utterances
-							{interimText}
-          </p>
-
-          <div>
-            <div>
-              <div>
-                <div>Finalised Text</div>
-              </div>
-              <div>
-                {finalisedText.map((str, index) => {
-                  return (
-                    <div key={index}>
-                      {str}
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
+        <div className="speech-section">
+          {/* <p>Status: {listening ? 'listening...' : 'finished listening'} */}
+          {buttonForListening}
+          {/* </p> */}
+          <div className="current-text speech-text">
+            Current:
+              <textarea name="translated-box" cols="25" rows="3" placeholder="Current" value={interimText}></textarea>
           </div>
-          <textarea name="translated-box" cols="25" rows="10" placeholder="Translation here" value={this.state.finalisedText}></textarea>
-          <select name="language" id="" onChange={this.handleLanguage}>
-            <option disabled selected>Select language</option>
-            <option value="es-es">Spanish</option>
-            <option value="en-gb">English</option>
-            <option value="de-de">German</option>
-            <option value="ca-es">Catalan</option>
-          </select>
-          <button onClick={this.translateHandler}>Translate!</button>
-          <audio controls="controls" src={this.state.readBack} autoPlay="autoplay">
-          </audio>
-          <button onClick={this.readOutLoud}>ROL!</button>
-        </div>
-      );
-    }
 
-    return (
-      <div>
-        {content}
-      </div>
+            <div>
+              <div className="finalised-text speech-text">
+                Finalised Text
+                  {/* {finalisedText.map((str, index) => {
+                    return (
+                      <div key={index}>
+                        {str}
+                      </div>
+                    );
+                  })} */}
+              <textarea name="translated-box" cols="25" rows="5" placeholder="Final text" value={this.state.finalisedText} onChange={this.handleWriting}></textarea>
+              </div>
+              <div className="lang-opt-container">
+                <select name="language" id="lang-selector" onChange={this.handleLanguage}>
+                  <option disabled selected>Select language</option>
+                  <option value="es-es">Spanish</option>
+                  <option value="en-gb">English</option>
+                  <option value="de-de">German</option>
+                  <option value="ca-es">Catalan</option>
+                </select>
+                <button onClick={this.translateHandler}>Translate!</button>
+              </div>
+              <audio controls="controls" src={this.state.readBack} autoPlay="autoplay">
+              </audio>
+              <button onClick={this.readOutLoud} className="play-btn">ROL! &#9654;</button>
+            </div>
+            </div>
+            );
+          }
+      
+          return (
+            <div>
+              {content}
+            </div>
 
-    );
-  }
-}
-
+            );
+          }
+        }
+        
 export default SpeechToTextDemo;

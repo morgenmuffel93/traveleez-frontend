@@ -28,7 +28,6 @@ class GuidesList extends Component {
   }
   onSubmit = (e) => {
     e.preventDefault();
-    console.log(e.target.attributes.id.value)
     const id  = e.target.attributes.id.value;
     GuideService.deleteGuide(id)
     .then((result) => {
@@ -50,18 +49,14 @@ class GuidesList extends Component {
     }
     return (
       <section className="guide-list">
+      <Link to="/guides-list/create">Create your own</Link>
         {this.state.guides.map((guide, index) => {
-          return <div key={index} >
-                <Link to="/guides-list/create">Create your own</Link>
+          return (
+            <div key={index} className="guide-card-container">
                 <GuideCard key ={guide._id} info = {guide}/> 
-                <Link to={`/guides-list/edit/${guide._id}`}>Edit</Link>
-                <form onSubmit={this.onSubmit} id={guide._id}>
-
-                <button type="submit">Delete</button>
-
-                </form>
                 </div>
-        })}
+          )}
+        )}
       </section>
     );
   }

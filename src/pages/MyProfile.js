@@ -1,32 +1,135 @@
 import React, { Component } from 'react';
-import GuideCard from './GuideCard'
+import ProfileService from '../lib/profile-service'
+import { Link } from 'react-router-dom'
+import GuideCard from './GuideCard';
+
 
 class Profile extends Component {
+  state = {
+    user: {},
+    isLoading: true,
+    isEditing: false,
+    info: {
+      expertise: '',
+      phone: '',
+      email: '',
+    }
+  }
+
+  componentDidMount() {
+    ProfileService.getUserInfo()
+      .then((response) => {
+        const user = response.user
+        this.setState({
+          user,
+          isLoading: false,
+        })
+      })
+
+      .catch((error) => {
+        this.setState({
+          isLoading: false,
+        })
+      })
+  }
+
+  changeToEdit = () => {
+    this.setState({
+      isEditing: true,
+    })
+  }
+
+  handleEditProfile = (e) => {
+    e.preventDefault();
+    this.setState({
+      isEditing: false,
+    })
+
+    const { user } = this.state;
+
+    ProfileService.updateProfile(user)
+      .then((result) => {
+        this.props.history.push(`/my`)
+      })
+  }
+
+  handleWriting = (e) => {
+    this.setState({
+      user:
+      {
+        ...this.state.user,
+        [e.target.name]: e.target.value
+      }
+    })
+  }
+
+  handleEditing = () => {
+    if (this.state.isEditing) {
+      const { user: { email, phone, expertise } } = this.state;
+      return (
+        <form onSubmit={this.handleEditProfile}>
+          <div className="my-info">
+            Your expertise:
+        <input type="text" value={expertise} onChange={this.handleWriting} name='expertise'/>
+          </div>
+          <div className="my-info">
+            E-mail:
+        <input type="text" value={email} onChange={this.handleWriting} name='email'/>
+          </div>
+          <div>
+            Phone:
+        <input type="text" value={phone} onChange={this.handleWriting} name='phone'/>
+          </div>
+          <button type="submit">Submit</button>
+        </form>
+      )
+    } else {
+      return (
+        <div>
+          <div className="my-info">
+            Your expertise:
+          <p clasName="info-text">{this.state.user.expertise}</p>
+          </div>
+          <div className="my-info">
+            E-mail:
+            <p clasName="info-text">{this.state.user.email}</p>
+          </div>
+          <div>
+            Phone:
+            <p clasName="info-text">{this.state.user.phone}</p>
+          </div>
+        </div>
+      )
+    }
+  }
+
   render() {
+
+    if (this.state.isLoading) {
+      return <div>Loading...</div>
+    }
+
     return (
       <section className="my-profile">
-        <h2>Your profile</h2>
-        <p id="text-userinfo" onClick={this.props.logout}>Logout</p>
-        <p>Your expertise</p>
-        <div className="my-info">
-          <p>E-mail:</p>
-          <input type="text" value="blabla@blabla.com" />
-          <button>Change</button>
-        </div>
-        <div>
-          <p>Phone:</p>
-          <input type="text" value="123456789" />
-          <button>Change</button>
-        </div>
+        <h2>Your profile <button onClick={this.changeToEdit}>&#9998;</button></h2>
+        {this.handleEditing()}
         <div className="my-guides">
-          <h3 className="my-guides-title">Your guides</h3>
-          <button>Create guide</button>
-            {/* <GuideCard /> */}
+          <h3 className="my-guides-title">Your guides [{this.state.user.guides.length}]</h3>
+          <Link to="/guides-list/create">Create guide</Link>
+          {this.state.user.guides.map((guide, index) => {
+            return <div key={index} className="guide-card-container">
+              <GuideCard key={guide._id} info={guide} />
+              <Link to={`/guides-list/edit/${guide._id}`}>Edit</Link>
+              <form onSubmit={this.onSubmit} id={guide._id}>
+                <button type="submit">Delete</button>
+              </form>
+            </div>
+          })}
         </div>
-        
       </section>
     );
   }
 }
+
 
 export default Profile;

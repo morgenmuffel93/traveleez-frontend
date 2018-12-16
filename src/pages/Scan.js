@@ -10,6 +10,7 @@ class Scan extends Component {
     translation: '',
     base64: '',
     target: '',
+    fullBase64: '',
   }
 
   toBase64(file, cb) {
@@ -24,21 +25,19 @@ class Scan extends Component {
   }
 
   fileChangedHandler = (event) => {
-    
+
     this.setState({
       selectedFile: event.target.files[0],
       fileName: event.target.files[0].name,
     }, () => {
 
       let base64String = '';
-      console.log(this.state.selectedFile)
       this.toBase64(this.state.selectedFile, (result) => {
         let base64String = result.split(",")
-        
-       console.log(base64String)
-       console.log(result)
+
         this.setState({
-            base64: base64String[1],
+          base64: base64String[1],
+          fullBase64: result,
         })
       })
     })
@@ -82,51 +81,88 @@ class Scan extends Component {
           translation: response.data.data.translations[0].translatedText,
         })
       })
-    // console.log(this.state.selectedFile)
   }
 
-  
-  
+  labelName = () => {
+    if (this.state.fileName) {
+      return <label for="file-input" class="input-label">
+        {this.state.fileName}
+      </label>
+    } else {
+      return <label for="file-input" class="input-label">
+        Browse...
+      </label>
+    }
+  }
+
+  handlePreview = () => {
+    if (this.state.fullBase64) {
+      return <img src={this.state.fullBase64} alt="" className="base64-img" />
+
+    }
+  }
+
+  handleWriting = (e) => {
+    e.preventDefault();
+    this.setState({
+      text: e.target.value,
+    })
+  }
+
+  handleUploadButton = () => {
+    if (this.state.fileName) {
+      return <button onClick={this.uploadHandler}>Upload!</button>
+    }
+  }
+
 
   render() {
-    // console.log(this.state.text)
 
     if (this.state.translation) {
       return <section className="scan-section translate-section">
         <h3>Voilà!</h3>
-        <textarea name="translated-box" cols="25" rows="10" placeholder="Translation here" value={this.state.translation}></textarea>
-        <select name="language" id="" onChange={this.handleLanguage}>
-          <option disabled selected>Select language</option>
-          <option value="es">Spanish</option>
-          <option value="en">English</option>
-          <option value="de">German</option>
-          <option value="ca">Catalan</option>
-        </select>
-        <button onClick={this.translateHandler}>Translate!</button>
+        <img src={this.state.fullBase64} alt="" className="base64-img" />
+        <textarea name="translated-box" cols="25" rows="5" placeholder="Translation here" value={this.state.translation}></textarea>
+        <div className="lang-opt-container">
+          <select name="language" id="lang-selector" onChange={this.handleLanguage}>
+            <option disabled selected>Select language</option>
+            <option value="es">Spanish</option>
+            <option value="en">English</option>
+            <option value="de">German</option>
+            <option value="ca">Catalan</option>
+          </select>
+          <button onClick={this.translateHandler}>Translate!</button>
+        </div>
       </section>
     }
 
     if (this.state.text) {
       return <section className="scan-section translate-section">
-        <h3>If this seems correct, click on translate and magic will happen</h3>
-        <textarea name="translated-box" cols="25" rows="10" placeholder="Translation here" value={this.state.text}></textarea>
-        <select name="language" id="" onChange={this.handleLanguage}>
-          <option disabled selected>Select language</option>
-          <option value="es">Spanish</option>
-          <option value="en">English</option>
-          <option value="de">German</option>
-          <option value="ca">Catalan</option>
-        </select>
-        <button onClick={this.translateHandler}>Translate!</button>
+        <h3>Check the text and fix if necessary</h3>
+        <img src={this.state.fullBase64} alt="" className="base64-img" />
+        <textarea name="translated-box" cols="25" rows="5" placeholder="Translation here" value={this.state.text} onChange={this.handleWriting}></textarea>
+        <div className="lang-opt-container">
+          <select name="language" id="lang-selector" onChange={this.handleLanguage}>
+            <option disabled selected>Select language</option>
+            <option value="es">Spanish</option>
+            <option value="en">English</option>
+            <option value="de">German</option>
+            <option value="ca">Catalan</option>
+          </select>
+          <button onClick={this.translateHandler}>Translate!</button>
+        </div>
       </section>
     }
 
     return (
       <section className="scan-section translate-section">
         <h3>Upload an image to translate it</h3>
-        <input type="file" onChange={this.fileChangedHandler} className="img-input" />
-        <button onClick={this.uploadHandler}>Upload!</button>
-     
+        <div class="input-file-container">
+          <input type="file" onChange={this.fileChangedHandler} className="img-input hidden" id="file-input" />
+          {this.labelName()}
+        </div>
+        {this.handlePreview()}
+        {this.handleUploadButton()}
       </section>
     );
   }
