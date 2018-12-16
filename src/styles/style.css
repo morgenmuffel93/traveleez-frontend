@@ -113,22 +113,38 @@ footer {
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-around;
+  transition: transform 1s;
+  
 }
-
+.main a{
+  transition: transform 1s;
+}
 /* Each square in the main page*/
 .info-card {
-  width: 40%;
-  height: 120px;
-  border: 1px solid black;
-  margin-bottom: 10px;
-  margin-top: 10px;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  background-color: #c0cad8;
+  width: 100px;
+    /* margin-bottom: 40px; */
+    height: 100px;
+    border: 8px solid #5dc1fe3d;
+    /* margin-bottom: 10px; */
+    margin-top: 10px;
+    text-align: center;
+    background-image: linear-gradient(to bottom right, white, #5dc1fe85);
+    /* background-color: #fff; */
+    padding: 5%;
+    /* padding-top: 10%; */
+    border-radius: 100%;
+    position: absolute;
+    box-shadow: 0px 2px 17px 1px #00000014;
 }
 
+.info-card img {
+  max-width: 55%;
+}
+.info-card p {
+  margin: 0px;
+  font-size: 0.8em;
+  color: #1b1a1a;
+}
 /* Page with a list of all the guides available */
 .guide-list {
   display: flex;
@@ -322,4 +338,18 @@ audio {
 
 .hidden {
   display: none;
+}
+
+.home-sick{
+display: flex;
+justify-content: space-around;
+}
+.cat-container img {
+  max-width: 50%;
+  height: auto;
+}
+.container {
+  background-color: #ffffff;
+background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 20.5V18H0v-2h20v-2H0v-2h20v-2H0V8h20V6H0V4h20V2H0V0h22v20h2V0h2v20h2V0h2v20h2V0h2v20h2V0h2v20h2v2H20v-1.5zM0 20h2v20H0V20zm4 0h2v20H4V20zm4 0h2v20H8V20zm4 0h2v20h-2V20zm4 0h2v20h-2V20zm4 4h20v2H20v-2zm0 4h20v2H20v-2zm0 4h20v2H20v-2zm0 4h20v2H20v-2z' fill='%235dc1fe' fill-opacity='0.11' fill-rule='evenodd'/%3E%3C/svg%3E");
+  height: 100vh;
 }
