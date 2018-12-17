@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 @import url('https://fonts.googleapis.com/css?family=Shadows+Into+Light');
+@import url('https://fonts.googleapis.com/css?family=Roboto+Slab');
 
 /* ---- reset ---- */
 
@@ -17,6 +18,10 @@ html {
 body {
   margin: 0;
   padding: 0;
+}
+
+#root {
+  height: 100%;
 }
 
 /* ---- typography ---- */
@@ -38,6 +43,13 @@ h1 {
 h2 {
   font-size: 30px;
   margin-bottom: 10px;
+  font-family: 'Roboto Slab', serif;
+  font-size: 25px;
+  text-align: center;
+}
+
+h3 {
+  font-family: 'Roboto Slab', serif;
 }
 
 /* ---- layout ---- */
@@ -82,7 +94,7 @@ textarea {
 nav {
   position: fixed;
   top: 0;
-  background-color: #f4f6f9;
+  background-color:  #FCFCF9;
   max-height: 50px;
   width: 100%;
 }
@@ -119,7 +131,7 @@ footer {
   border-top: 2px solid gray;
   display: flex;
   justify-content: space-around;
-  background-color: #f4f6f9;
+  background-color: #FCFCF9;
 }
 
 .footer-img {
@@ -130,36 +142,36 @@ footer {
 /* Main page, list with all the squares */
 .main {
   display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    transition: -webkit-transform 1s;
-    transition: transform 1s;
-    transition: transform 1s, -webkit-transform 1s;
-    margin: 0;
-    margin-top: 79px;
-    /*height: 100vh;*/
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  transition: transform 1s;
+  background-image: linear-gradient(to bottom, #E1F2d7, #71B48D);
+  margin: 60px 0px 50px 0px;
+  padding: 40px 20px;
+  height: 458px;
   
 }
 .main a{
   transition: transform 1s;
+  text-decoration: none;
 }
 
 /* Each square in the main page*/
 .info-card {
   width: 100px;
-    /* margin-bottom: 40px; */
-    height: 100px;
-    border: 8px solid #5dc1fe3d;
-    /* margin-bottom: 10px; */
-    margin-top: 10px;
-    text-align: center;
-    background-image: linear-gradient(to bottom right, white, #5dc1fe85);
-    /* background-color: #fff; */
-    padding: 5%;
-    /* padding-top: 10%; */
-    border-radius: 100%;
-    box-shadow: 0px 2px 17px 1px #00000014;
+  width: 100px;
+  height: 100px;
+  margin-top: 10px;
+  text-align: center;
+  padding: 5%;
+  border-radius: 10%;
+  box-shadow: 0px 2px 17px 1px #00000014;
+  background-color: #FCFCF9;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .info-card img {
@@ -169,6 +181,8 @@ footer {
   margin: 0px;
   font-size: 0.8em;
   color: #1b1a1a;
+  font-size: 20px;
+  padding-top: 5px;
 }
 
 /* Page with a list of all the guides available */
@@ -182,7 +196,7 @@ footer {
 
 /* Each card in the guide list */
 .guide-card-container {
-  width: 80%;
+  width: 95%;
 }
 
 .guide-card {
@@ -202,7 +216,8 @@ footer {
 
 .btn-interested {
   align-self: center;
-  width: 40%;
+  width: 70%;
+  height: 55px;
 }
 
 /* Translate image and speech recognition section */
