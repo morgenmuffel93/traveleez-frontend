@@ -20,7 +20,6 @@ class GuidesList extends Component {
           })
       })
       .catch((error) => {
-        console.log(error)
         this.setState({
           isLoading: false,
         })
@@ -49,7 +48,8 @@ class GuidesList extends Component {
     }
     return (
       <section className="guide-list">
-      <Link to="/guides-list/create">Create your own</Link>
+      <h2>List of guides</h2>
+      <Link to="/guides-list/create" className="btn">Create your own</Link>
         {this.state.guides.map((guide, index) => {
           return (
             <div key={index} className="guide-card-container">

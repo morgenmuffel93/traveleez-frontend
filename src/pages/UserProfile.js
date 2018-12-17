@@ -18,7 +18,6 @@ class Profile extends Component {
           })
       })
       .catch((error) => {
-        console.log(error)
         this.setState({
           isLoading: false,
         })

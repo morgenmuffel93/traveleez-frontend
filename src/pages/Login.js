@@ -7,6 +7,7 @@ class Login extends Component {
   state = {
     username: "",
     password: "",
+    error: "",
   }
 
   handleFormSubmit = (event) => {
@@ -17,12 +18,25 @@ class Login extends Component {
       .then((user) => {
         this.props.setUser(user);
       })
-      .catch(error => console.log(error))
+      .catch(error => {
+
+        this.setState({
+          error: error.response.data.error,
+        })
+      }
+        )
+        
   }
 
   handleChange = (event) => {
     const { name, value } = event.target;
     this.setState({ [name]: value });
+  }
+
+  checkErrors = () => {
+    if (this.state.error) {
+      return <div className="error">{this.state.error}</div>
+    }
   }
 
   render() {
@@ -31,6 +45,7 @@ class Login extends Component {
       <section className="login-signup-section">
         <div className="login-signup-container">
           <form onSubmit={this.handleFormSubmit} className="login-signup-form">
+            {this.checkErrors()}
             <div className="username-container">
             <label>Username:</label>
             <input type="text" name="username" value={username} onChange={this.handleChange} className="login-signup-input" />

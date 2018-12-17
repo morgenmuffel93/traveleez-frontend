@@ -11,13 +11,15 @@ class Auth {
   signup(user) {
     const { username, password } = user;
     return this.auth.post('/auth/signup', {username, password})
-      .then(({ data }) => data);
+      .then(({ data }) => {
+        return data});
   }
 
   login(user) {
     const { username, password } = user;
     return this.auth.post('/auth/login', {username, password})
-      .then(({ data }) => data);
+    .then(({ data }) => {
+      return data});
   }
 
   logout() {

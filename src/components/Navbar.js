@@ -65,7 +65,6 @@ class Navbar extends Component {
       search: value.location,
       locations: [],
     })
-    console.log(value.location);
   }
   render() {
     const {locations} = this.state
@@ -74,7 +73,6 @@ class Navbar extends Component {
         {this.props.isLogged ? this.renderIsLoggedIn() : this.renderIsNotLoggedIn()}
         <div className='location-list'>
         {locations.map((location) => {
-          console.log(this.state.locations)
                 return <li key={location.name} className={'location-drop'}value={location} onClick={() => {this.takeValue({location})}}>
                 {location}</li>
                 

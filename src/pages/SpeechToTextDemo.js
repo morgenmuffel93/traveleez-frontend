@@ -46,7 +46,6 @@ class SpeechToTextDemo extends Component {
       this.listener.startListening();
       this.setState({ listening: true });
     } catch (err) {
-      console.log(err);
     }
   };
 

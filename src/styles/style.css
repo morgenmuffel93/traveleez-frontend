@@ -31,6 +31,11 @@ body {
   font-size: 20px;
 }
 
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
 h1 {
   font-family: 'Roboto Slab', serif;
   font-size: 30px;
@@ -55,23 +60,24 @@ section {
 }
 
 p {
-  margin-bottom: 0;
+  margin: 10px 0px 0px 0px;
 }
 
 p:last-of-type {
   margin-bottom: 20px;
 }
 
-button {
-  border: 2px solid #829fce;
-  color: #829fce;
+button, .btn {
+  border: 2px solid #71B48D;
+  color: #71B48D;
   background-color: white;
   height: 30px;
+  padding: 0px 7px;
 }
 
 button:hover {
   color: white;
-  background-color: #829fce;
+  background-color: #71B48D;
 }
 
 textarea {
@@ -82,6 +88,22 @@ textarea {
   background-size: 100% 1.2em;
   padding-left: 35px;
   width: 100%;
+  margin-bottom: 10px;
+}
+
+.bold-span {
+  font-weight: 600;
+}
+
+.underlined-span {
+  text-decoration: underline;
+}
+
+.error {
+  color: red;
+  font-weight: bold;
+  max-width: 200px;
+  text-align: center;
   margin-bottom: 10px;
 }
 
@@ -191,8 +213,12 @@ footer {
 
 
 /* Each card in the guide list */
+
 .guide-card-container {
   width: 95%;
+}
+.card-title {
+  color: #71B48D;
 }
 
 .guide-card {
@@ -201,6 +227,33 @@ footer {
   margin-top: 15px;
   margin-bottom: 15px;
   background-color: white;
+  padding: 0px 15px 15px 15px;
+  background-color: #e8f2e84f;
+}
+
+.card-when-container {
+  display: flex;
+  width: 100%;
+  margin-bottom: 5px;
+}
+
+.card-where {
+  display: flex;
+  width: 100%;
+}
+
+.card-when-title {
+  width: 36%;
+}
+
+.card-where-title {
+  width: 30%;
+}
+
+.guide-see-more {
+  padding-left: 120px;
+  font-family: 'Roboto Slab', serif;
+  color: #71B48D;
 }
 
 /* Guide details when you click on one */
@@ -214,6 +267,29 @@ footer {
   align-self: center;
   width: 70%;
   height: 55px;
+}
+
+.interested-form {
+  display: flex;
+  justify-content: center;
+}
+
+.guide-owner-text {
+  color: #acb471;
+}
+
+.contact-details {
+  color: #acb471;
+}
+
+.contact-text {
+  text-align: center;
+  margin-top: 15px;
+}
+
+#guide-description {
+  font-style: italic;
+  margin-bottom: 50px;
 }
 
 /* Translate image and speech recognition section */
@@ -310,6 +386,16 @@ footer {
 .edit-profile-btn {
   margin-top: 10px;
 }
+
+.delete-edit-container {
+  display: flex;
+  width: 30%;
+  margin-left: 90px;
+  padding-bottom: 20px;
+  justify-content: space-around;
+}
+
+
 
 /* List of user's own guides in MY profile */
 .my-guides-title {

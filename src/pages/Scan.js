@@ -20,7 +20,6 @@ class Scan extends Component {
       cb(reader.result)
     };
     reader.onerror = (error) => {
-      console.log('Error: ', error);
     };
   }
 
@@ -89,7 +88,7 @@ class Scan extends Component {
         {this.state.fileName}
       </label>
     } else {
-      return <label for="file-input" className="input-label">
+      return <label htmlFor="file-input" className="input-label">
         Browse...
       </label>
     }
