@@ -7,19 +7,14 @@ class Navbar extends Component {
   state = {
     search: '',
     locations: [],
+    searchHappening: false,
 
   }
 
   renderIsLoggedIn = () => {
     return <div className="nav-container">
       <input type="text" className="input" placeholder="Search Location..." onChange={this.handleSearch} name="search" value={this.state.search} />
-      <div>
-        {this.state.locations.map((place, index) => {
-          return <div key={index}>
-            {/* {locations} */}
-          </div>
-        })}
-      </div>
+     
       <div className="nav-userinfo">
         <p id="text-userinfo">username: {this.props.user.username}</p>
         <p id="text-userinfo" onClick={this.props.logout}>Logout</p>
@@ -36,19 +31,20 @@ class Navbar extends Component {
 
   findLocation = (value) => {
     this.setState({
-      locations: []
+      locations: [],
     })
 
     if (value.length > 2) {
+     
+      this.setState({
+        searchHappening: true,
+      })
       let locationsList = [];
       places.forEach((place) => {
-        if (place.name.toLowerCase().includes(value.toLowerCase())) {
+        if (place.name.toLowerCase().includes(value.toLowerCase()) && locationsList.length < 10) {
           locationsList.push(place.name)
         }
       })
-      if (value.length < 2) {
-        locationsList = [];
-      }
       this.setState({
         locations: locationsList,
       })
@@ -56,7 +52,7 @@ class Navbar extends Component {
 
   }
 
-
+  
   handleSearch = (event) => {
     this.setState({
       search: event.target.value,
@@ -64,10 +60,26 @@ class Navbar extends Component {
     this.findLocation(event.target.value)
   }
 
+  takeValue = (value) => {
+    this.setState({
+      search: value.location,
+      locations: [],
+    })
+    console.log(value.location);
+  }
   render() {
+    const {locations} = this.state
     return (
       <nav>
         {this.props.isLogged ? this.renderIsLoggedIn() : this.renderIsNotLoggedIn()}
+        <div className='location-list'>
+        {locations.map((location) => {
+          console.log(this.state.locations)
+                return <li key={location.name} className={'location-drop'}value={location} onClick={() => {this.takeValue({location})}}>
+                {location}</li>
+                
+        })}
+        </div>
       </nav>
     )
   }

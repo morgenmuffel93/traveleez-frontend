@@ -133,7 +133,6 @@ footer {
     padding: 5%;
     /* padding-top: 10%; */
     border-radius: 100%;
-    position: absolute;
     box-shadow: 0px 2px 17px 1px #00000014;
 }
 
@@ -344,12 +343,26 @@ audio {
 display: flex;
 justify-content: space-around;
 }
+.cat-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 .cat-container img {
   max-width: 50%;
   height: auto;
+  margin: 10px;
 }
 .container {
-  background-color: #ffffff;
-background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 20.5V18H0v-2h20v-2H0v-2h20v-2H0V8h20V6H0V4h20V2H0V0h22v20h2V0h2v20h2V0h2v20h2V0h2v20h2V0h2v20h2v2H20v-1.5zM0 20h2v20H0V20zm4 0h2v20H4V20zm4 0h2v20H8V20zm4 0h2v20h-2V20zm4 0h2v20h-2V20zm4 4h20v2H20v-2zm0 4h20v2H20v-2zm0 4h20v2H20v-2zm0 4h20v2H20v-2z' fill='%235dc1fe' fill-opacity='0.11' fill-rule='evenodd'/%3E%3C/svg%3E");
+  background-color: #fff;
   height: 100vh;
+}
+.location-list {
+  background: white;
+  border-bottom: 1px solid transparent;
+  box-shadow: 4px 2px 5px #00000042;
+  list-style: none;
+  text-align: center;
+  padding: 2%;
 }

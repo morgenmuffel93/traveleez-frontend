@@ -5,7 +5,7 @@ class Scan extends Component {
         state = {
             cats: [],
             dogs: {x: 0, y: 0},
-            loading: true,
+            isLoading: true,
         }
     
     componentDidMount(){
@@ -24,10 +24,12 @@ class Scan extends Component {
     
         this.setState({
             cats: catList,
-            loading: false,
+            isLoading: false,
         })
+      
 
     }
+    
   
 
   
@@ -35,6 +37,9 @@ class Scan extends Component {
   render() {
     
     const {cats} = this.state
+    if(this.state.isLoading){
+        return <div>is Loading . . .</div>
+    }
     return (
       <section className="home-sick">
         <div className='cat-container'>
