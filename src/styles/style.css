@@ -25,7 +25,16 @@ body {
   font-family: 'Roboto', sans-serif;
   font-size: 20px;
 }
+h1 {
+  display: block;
+  font-size: 2em;
+  margin: 0px;
+  margin-bottom: 40px;
+  border-bottom: 2px solid;
+  padding: 8px;
+  font-family: 'Major Mono Display', monospace;
 
+}
 h2 {
   font-size: 30px;
   margin-bottom: 10px;
@@ -121,10 +130,15 @@ footer {
 /* Main page, list with all the squares */
 .main {
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  transition: transform 1s;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    transition: -webkit-transform 1s;
+    transition: transform 1s;
+    transition: transform 1s, -webkit-transform 1s;
+    margin: 0;
+    margin-top: 79px;
+    /*height: 100vh;*/
   
 }
 .main a{
@@ -406,7 +420,6 @@ justify-content: space-around;
   height: auto;
   margin: 10px;
 }
-<<<<<<< HEAD
 .container {
   background-color: #fff;
   height: 100vh;
@@ -419,5 +432,41 @@ justify-content: space-around;
   text-align: center;
   padding: 2%;
 }
-=======
->>>>>>> e7dd787491f44b0b01c1eca8f08d4c03d6757eb0
+
+.guide-icon{
+  position: relative;
+}
+.guide-icon-entering{
+  animation: fadeIn;
+  animation-duration: 0.4s;
+}
+
+.guide-icon-entered{
+  border: 0px;
+}
+.translate-icon{
+  position: relative;
+}
+.translate-icon-entering{
+  animation: fadeIn;
+  animation-duration: 0.5s;
+}
+
+.translate-icon-entered{
+  border: 0px;
+}
+
+@keyframes fadeIn {
+	0% {
+		
+		opacity: 0;
+	}
+	50% {
+		
+		opacity: 0.5;
+	}
+	100% {
+		
+		opacity: 1;
+	}
+}

@@ -97,6 +97,12 @@ class SpeechToTextDemo extends Component {
       finalisedText: e.target.value,
     })
   }
+  resetTranslate = (e) => {
+    e.preventDefault();
+    this.setState({
+      finalisedText: '',
+    })
+  }
 
   render() {
     const { error, interimText, finalisedText, listening } = this.state;
@@ -154,6 +160,8 @@ class SpeechToTextDemo extends Component {
                   <option value="ca-es">Catalan</option>
                 </select>
                 <button onClick={this.translateHandler}>Translate!</button>
+                <button onClick={this.resetTranslate}>Reset</button>
+
               </div>
               <audio controls="controls" src={this.state.readBack} autoPlay="autoplay">
               </audio>
