@@ -145,7 +145,6 @@ footer {
     padding: 5%;
     /* padding-top: 10%; */
     border-radius: 100%;
-    position: absolute;
     box-shadow: 0px 2px 17px 1px #00000014;
 }
 
@@ -396,7 +395,29 @@ audio {
 display: flex;
 justify-content: space-around;
 }
+.cat-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 .cat-container img {
   max-width: 50%;
   height: auto;
+  margin: 10px;
 }
+<<<<<<< HEAD
+.container {
+  background-color: #fff;
+  height: 100vh;
+}
+.location-list {
+  background: white;
+  border-bottom: 1px solid transparent;
+  box-shadow: 4px 2px 5px #00000042;
+  list-style: none;
+  text-align: center;
+  padding: 2%;
+}
+=======
+>>>>>>> e7dd787491f44b0b01c1eca8f08d4c03d6757eb0
