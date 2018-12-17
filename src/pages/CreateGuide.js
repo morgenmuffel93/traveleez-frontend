@@ -17,7 +17,6 @@ class CreateGuide extends Component {
   }
  
   onSubmit = (data) => {
-
     GuideService.createGuide(data)
       .then(() => {
         this.setState({

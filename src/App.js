@@ -28,16 +28,16 @@ class App extends Component {
           <Navbar />
           <Switch>
               <PrivateRoute exact path="/" component={Main} />
-              <AnonRoute path="/signup" component={Signup} />
-              <AnonRoute path="/login" component={Login} />
-              <PrivateRoute path="/scan" component={Scan} />
-              <PrivateRoute path="/speech" component={Speech} />
-              <PrivateRoute path="/homesick" component={HomeSick} />
-              <PrivateRoute path="/my" component={MyProfile} />
+              <AnonRoute exact path="/signup" component={Signup} />
+              <AnonRoute exact path="/login" component={Login} />
+              <PrivateRoute exact path="/scan" component={Scan} />
+              <PrivateRoute exact path="/speech" component={Speech} />
+              <PrivateRoute exact path="/homesick" component={HomeSick} />
+              <PrivateRoute exact path="/my" component={MyProfile} />
               <PrivateRoute exact path="/profile/:id" component={UserProfile} />
-              <PrivateRoute exact path="/guides-list/:id" component={GuideDetails} />
               <PrivateRoute exact path="/guides-list/create" component={CreateGuide} />
               <PrivateRoute exact path="/guides-list/edit/:id" component={EditGuide} />
+              <PrivateRoute exact path="/guides-list/:id" component={GuideDetails} />
               <PrivateRoute exact path="/guides-list" component={GuidesList} />
           </Switch>
           <Footer/>

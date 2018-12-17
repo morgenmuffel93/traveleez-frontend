@@ -70,7 +70,7 @@ class SpeechToTextDemo extends Component {
       })
   }
   readOutLoud = () => {
-    axios.get(`http://api.voicerss.org/?key=ab98abe31f3a4a11bbbf68f7b9f6d334&hl=${this.state.target}&src=${this.state.finalisedText}&c=mp3&rnd=0.7265951914142883&b64=true`)
+    axios.get(`https://api.voicerss.org/?key=ab98abe31f3a4a11bbbf68f7b9f6d334&hl=${this.state.target}&src=${this.state.finalisedText}&c=mp3&rnd=0.7265951914142883&b64=true`)
       .then((response) => {
         this.playSound(response)
         this.setState({

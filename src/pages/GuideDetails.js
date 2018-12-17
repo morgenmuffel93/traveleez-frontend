@@ -52,9 +52,12 @@ class GuideDetails extends Component {
   handleSaved = () => {
     if (this.state.status === 'added') {
       return (
+        <div> 
         <form onSubmit={this.handleSubmit} action="">
         <button className="btn-interested" type="submit">I'm not interested anymore</button>
         </form>
+        <p><a href={`mailto:${this.state.guide.owner.email}`} target="_top">Send Mail</a> or <a href={`whatsapp://send?abid=${this.state.guide.owner.phone}&text=Hello%2C%20World!`}>Send Message</a></p>
+        </div>
       )
     } else {
       return (
@@ -79,7 +82,7 @@ class GuideDetails extends Component {
       <section className="guide-details">
         <h2>{guide.name}</h2>
         <p>{guide.expertise}</p>
-        <p>Created by: <Link to={`/profile/${guide.owner._id}`}>{guide.owner._id}</Link></p>
+        <p>Created by: <Link to={`/profile/${guide.owner._id}`}>{guide.owner.username}</Link></p>
         <p>{guide.description}</p>
         {this.handleSaved()}
       </section>
