@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ProfileService from '../lib/profile-service'
+import GuideService from '../lib/guides-service'
 import { Link } from 'react-router-dom'
 import GuideCard from './GuideCard';
 
@@ -66,20 +67,20 @@ class Profile extends Component {
   handleEditing = () => {
     if (this.state.isEditing) {
       const { user: { email, phone, expertise } } = this.state;
-      
+
       return (
         <form onSubmit={this.handleEditProfile}>
           <div className="my-info">
             Your expertise:
-        <input type="text" value={expertise} onChange={this.handleWriting} name='expertise'/>
+        <input type="text" value={expertise} onChange={this.handleWriting} name='expertise' />
           </div>
           <div className="my-info">
             E-mail:
-        <input type="text" value={email} onChange={this.handleWriting} name='email'/>
+        <input type="text" value={email} onChange={this.handleWriting} name='email' />
           </div>
           <div>
             Phone:
-        <input type="text" value={phone} onChange={this.handleWriting} name='phone'/>
+        <input type="text" value={phone} onChange={this.handleWriting} name='phone' />
           </div>
           <button type="submit" className="edit-profile-btn">Submit</button>
         </form>
@@ -104,6 +105,19 @@ class Profile extends Component {
     }
   }
 
+  onSubmit = (e) => {
+    e.preventDefault();
+    const id = e.target.attributes.id.value;
+    GuideService.deleteGuide(id)
+      .then((result) => {
+        const guides = this.state.user.guides;
+        guides.splice(guides.findIndex(v => v._id === result._id), 1)
+        this.setState({
+          guides,
+        })
+      })
+  }
+
   render() {
 
     if (this.state.isLoading) {
@@ -119,7 +133,7 @@ class Profile extends Component {
           <Link to="/guides-list/create">Create guide</Link>
           {this.state.user.guides.map((guide, index) => {
             return <div key={index} className="guide-card-container">
-              <GuideCard key={guide._id} info={guide} />
+              <Link to={`/guides-list/${guide._id}`}><GuideCard key={guide._id} info={guide} /></Link>
               <Link to={`/guides-list/edit/${guide._id}`}>Edit</Link>
               <form onSubmit={this.onSubmit} id={guide._id}>
                 <button type="submit">Delete</button>

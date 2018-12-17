@@ -1,13 +1,47 @@
 import React, { Component } from 'react';
+import GuideService from '../lib/guides-service'
+import { Link } from 'react-router-dom'
 
 class GuideDetails extends Component {
+  state = {
+    guide: {},
+    isLoading: true,
+  }
+  
+  componentDidMount() {
+    GuideService.getGuideDetails(this.props.match.params.id)
+      .then((guide) => {
+        console.log(guide)
+        this.setState({
+          guide,
+          isLoading: false,
+          })
+      })
+      .catch((error) => {
+        console.log(error)
+        this.setState({
+          isLoading: false,
+        })
+      })
+  }
+
+
   render() {
+    
+    const { guide } = this.state;
+
+    if (this.state.isLoading) {
+      return (
+        <div>Loading...</div>
+      )
+    }
+
     return (
       <section class="guide-details">
-        <h2>Title</h2>
-        <p>Expertise</p>
-        <p>Created by: user</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+        <h2>{guide.name}</h2>
+        <p>{guide.expertise}</p>
+        <p>Created by: <Link to={`/profile/${guide.owner._id}`}>{guide.owner._id}</Link></p>
+        <p>{guide.description}</p>
         <button className="btn-interested">I'm interested</button>
       </section>
     );

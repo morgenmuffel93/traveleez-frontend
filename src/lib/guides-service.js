@@ -15,6 +15,13 @@ class GuideApi {
       })
   }
 
+  getGuideDetails(id) {
+    return this.apiInstance.get(`/guides-list/${id}`)
+      .then(({ data }) => {
+        return data
+      })
+  }
+
   createGuide(data) {
     return this.apiInstance.post('/guides-list', data)
       .then((response) => {

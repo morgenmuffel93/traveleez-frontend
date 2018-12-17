@@ -53,7 +53,7 @@ class GuidesList extends Component {
         {this.state.guides.map((guide, index) => {
           return (
             <div key={index} className="guide-card-container">
-                <GuideCard key ={guide._id} info = {guide}/> 
+                <Link to={`/guides-list/${guide._id}`}><GuideCard key ={guide._id} info = {guide}/></Link>
                 </div>
           )}
         )}

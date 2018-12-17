@@ -15,11 +15,16 @@ class ProfileApi {
       })
   }
 
-  updateProfile(info) {
+  getOtherUserInfo(id) {
+    return this.apiInstance.get(`/profile/${id}`)
+      .then(({ data }) => {
+        return data.user
+      })
+  }
 
+  updateProfile(info) {
     return this.apiInstance.put('/profile', info)
       .then(({ data }) => {
-
         return data
       })
   }

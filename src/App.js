@@ -3,13 +3,11 @@ import { Route, Switch } from 'react-router-dom'
 import './styles/style.css';
 
 import Navbar from './components/Navbar';
-import Private from './pages/Private';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
 import PrivateRoute from './components/PrivateRoute';
 import AnonRoute from './components/AnonRoute';
 import AuthProvider from './providers/AuthProvider';
-import Home from './pages/Home';
 import Main from './pages/Main'
 import Footer from './components/Footer'
 import MyProfile from './pages/MyProfile'
@@ -19,6 +17,8 @@ import HomeSick from './pages/HomeSick'
 import GuidesList from './pages/GuidesList'
 import CreateGuide from './pages/CreateGuide';
 import EditGuide from './pages/EditGuide';
+import GuideDetails from './pages/GuideDetails';
+import UserProfile from './pages/UserProfile';
 
 
 class App extends Component {
@@ -34,9 +34,11 @@ class App extends Component {
               <PrivateRoute path="/speech" component={Speech} />
               <PrivateRoute path="/homesick" component={HomeSick} />
               <PrivateRoute path="/my" component={MyProfile} />
+              <PrivateRoute exact path="/profile/:id" component={UserProfile} />
+              <PrivateRoute exact path="/guides-list/:id" component={GuideDetails} />
               <PrivateRoute exact path="/guides-list/create" component={CreateGuide} />
               <PrivateRoute exact path="/guides-list/edit/:id" component={EditGuide} />
-              <PrivateRoute path="/guides-list" component={GuidesList} />
+              <PrivateRoute exact path="/guides-list" component={GuidesList} />
           </Switch>
           <Footer/>
       </AuthProvider>
