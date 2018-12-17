@@ -65,6 +65,9 @@ class Profile extends Component {
   }
 
   handleEditing = () => {
+    if (this.state.isLoading) {
+      return <div>Loading...</div>
+    }
     if (this.state.isEditing) {
       const { user: { email, phone, expertise } } = this.state;
 

@@ -85,11 +85,11 @@ class Scan extends Component {
 
   labelName = () => {
     if (this.state.fileName) {
-      return <label for="file-input" class="input-label">
+      return <label for="file-input" className="input-label">
         {this.state.fileName}
       </label>
     } else {
-      return <label for="file-input" class="input-label">
+      return <label for="file-input" className="input-label">
         Browse...
       </label>
     }
@@ -157,7 +157,7 @@ class Scan extends Component {
     return (
       <section className="scan-section translate-section">
         <h3>Upload an image to translate it</h3>
-        <div class="input-file-container">
+        <div className="input-file-container">
           <input type="file" onChange={this.fileChangedHandler} className="img-input hidden" id="file-input" />
           {this.labelName()}
         </div>
