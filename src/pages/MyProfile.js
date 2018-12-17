@@ -66,6 +66,7 @@ class Profile extends Component {
   handleEditing = () => {
     if (this.state.isEditing) {
       const { user: { email, phone, expertise } } = this.state;
+      
       return (
         <form onSubmit={this.handleEditProfile}>
           <div className="my-info">
@@ -80,7 +81,7 @@ class Profile extends Component {
             Phone:
         <input type="text" value={phone} onChange={this.handleWriting} name='phone'/>
           </div>
-          <button type="submit">Submit</button>
+          <button type="submit" className="edit-profile-btn">Submit</button>
         </form>
       )
     } else {
@@ -88,15 +89,15 @@ class Profile extends Component {
         <div>
           <div className="my-info">
             Your expertise:
-          <p clasName="info-text">{this.state.user.expertise}</p>
+          <p className="info-text">{this.state.user.expertise}</p>
           </div>
           <div className="my-info">
             E-mail:
-            <p clasName="info-text">{this.state.user.email}</p>
+            <p className="info-text">{this.state.user.email}</p>
           </div>
           <div>
             Phone:
-            <p clasName="info-text">{this.state.user.phone}</p>
+            <p className="info-text">{this.state.user.phone}</p>
           </div>
         </div>
       )

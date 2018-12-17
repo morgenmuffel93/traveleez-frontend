@@ -25,7 +25,6 @@ class App extends Component {
   render() {
     return (
       <AuthProvider>
-        <div className="container">
           <Navbar />
           <Switch>
               <PrivateRoute exact path="/" component={Main} />
@@ -40,7 +39,6 @@ class App extends Component {
               <PrivateRoute path="/guides-list" component={GuidesList} />
           </Switch>
           <Footer/>
-        </div>
       </AuthProvider>
     )
   }
