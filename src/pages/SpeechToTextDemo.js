@@ -150,6 +150,8 @@ class SpeechToTextDemo extends Component {
                     );
                   })} */}
               <textarea name="translated-box" cols="25" rows="5" placeholder="Final text" value={this.state.finalisedText} onChange={this.handleWriting}></textarea>
+              <button id="reset-button" onClick={this.resetTranslate}>Reset</button>
+              <button onClick={this.readOutLoud} id="play-btn">Play &#9654;</button>
               </div>
               <div className="lang-opt-container">
                 <select name="language" id="lang-selector" onChange={this.handleLanguage}>
@@ -160,12 +162,12 @@ class SpeechToTextDemo extends Component {
                   <option value="ca-es">Catalan</option>
                 </select>
                 <button onClick={this.translateHandler}>Translate!</button>
-                <button onClick={this.resetTranslate}>Reset</button>
+                
 
               </div>
               <audio controls="controls" src={this.state.readBack} autoPlay="autoplay">
               </audio>
-              <button onClick={this.readOutLoud} className="play-btn">ROL! &#9654;</button>
+              
             </div>
             </div>
             );

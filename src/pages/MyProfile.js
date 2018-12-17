@@ -81,7 +81,7 @@ class Profile extends Component {
             E-mail:
         <input type="text" value={email} onChange={this.handleWriting} name='email' />
           </div>
-          <div>
+          <div className="my-info">
             Phone:
         <input type="text" value={phone} onChange={this.handleWriting} name='phone' />
           </div>
