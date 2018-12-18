@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import axios from 'axios'
 
-class Scan extends Component {
+class Homesick extends Component {
         state = {
             cats: [],
             dogs: {x: 0, y: 0},
@@ -53,4 +52,4 @@ class Scan extends Component {
   }
 }
 
-export default Scan;
+export default Homesick;

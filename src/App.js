@@ -19,6 +19,7 @@ import CreateGuide from './pages/CreateGuide';
 import EditGuide from './pages/EditGuide';
 import GuideDetails from './pages/GuideDetails';
 import UserProfile from './pages/UserProfile';
+import Transport from './pages/Transport';
 
 import { LocationsProvider } from "./providers/LocationsProvider";
 
