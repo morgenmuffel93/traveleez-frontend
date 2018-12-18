@@ -17,9 +17,7 @@ class Homesick extends Component {
             cat.x = randomNumber + 75;
             cat.y = randomNumber + 100;
             catList.push(cat);
-            console.log(cat)
         }
-        console.log(catList)
     
         this.setState({
             cats: catList,

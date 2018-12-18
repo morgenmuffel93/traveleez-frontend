@@ -33,7 +33,9 @@ class Signup extends Component {
                 this.props.setUser(user)
               })
               .catch(error => 
-                console.log(error.status)
+                this.setState({
+                  error: error.response.data.error,
+                })
                 )
             }
   }
@@ -44,11 +46,18 @@ class Signup extends Component {
     this.setState({[name]: value});
   }
 
+  checkErrors = () => {
+    if (this.state.error) {
+      return <div className="error">{this.state.error}</div>
+    }
+  }
+
   render() {
     const { username, password } = this.state;
     return (
       <section className="login-signup-section">
         <div className="login-signup-container">
+        {this.checkErrors()}
           <form onSubmit={this.handleFormSubmit} className="login-signup-form">
             <div className="username-container">
             <label>Username:</label>

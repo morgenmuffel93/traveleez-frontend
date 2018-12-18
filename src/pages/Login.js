@@ -7,14 +7,14 @@ class Login extends Component {
   state = {
     username: "",
     password: "",
-    error: '',
+    error: "",
   }
 
   handleFormSubmit = (event) => {
     event.preventDefault();
     const { username, password } = this.state
 
-    if(!username.includes('^[a-z, A-Z, 0-9,@]')){
+    if(username.includes('^[a-z, A-Z, 0-9,@]')){
       return this.setState({
             error: 'You cannot use special characters',
       })}
@@ -24,11 +24,13 @@ class Login extends Component {
             .then((user) => {
               this.props.setUser(user);
             })
-            .catch(error => 
-              console.log(error)
-              )
-        }
-  }
+            .catch(error => {
+              this.setState({
+                error: error.response.data.error,
+              })
+            })
+      }
+    }
 
   handleChange = (event) => {
     
@@ -40,12 +42,19 @@ class Login extends Component {
       });
   }
 
+  checkErrors = () => {
+    if (this.state.error) {
+      return <div className="error">{this.state.error}</div>
+    }
+  }
+
   render() {
     const { username, password } = this.state;
     return (
       <section className="login-signup-section">
         <div className="login-signup-container">
           <form onSubmit={this.handleFormSubmit} className="login-signup-form">
+            {this.checkErrors()}
             <div className="username-container">
            
             <label>Username:</label>

@@ -13,6 +13,7 @@ class EditGuide extends Component {
       expertise: '',
       duration: '',
     },
+    error: '',
     isLoading: true,
   }
 
@@ -24,6 +25,11 @@ class EditGuide extends Component {
           isLoading: false,
         })
       })
+      .catch(error => 
+        this.setState({
+          error: error.response.data.error,
+        })
+        )
   }
 
   handleOnChange = (e) => {
@@ -48,6 +54,13 @@ class EditGuide extends Component {
 
   render() {
     const { guide: { title, date, time, description, location, expertise, duration } } = this.state;
+    if (this.state.error) {
+      return (
+        <section>
+        <div>{this.state.error}</div>
+        </section>
+      )
+    }
 
     if (this.state.isLoading) {
       return (

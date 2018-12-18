@@ -13,8 +13,6 @@ class GuideDetails extends Component {
   componentDidMount() {
     GuideService.getGuideDetails(this.props.match.params.id)
       .then((response) => {
-        console.log(response.user.savedForLater);
-        console.log(response.guide._id)
         if (response.user.savedForLater.indexOf(response.guide._id) >= 0) {
           this.setState({
             guide: response.guide,
@@ -31,7 +29,6 @@ class GuideDetails extends Component {
         }
       })
       .catch((error) => {
-        console.log(error)
         this.setState({
           isLoading: false,
         })
@@ -45,7 +42,6 @@ class GuideDetails extends Component {
       this.setState({
         status: response.status,
       })
-      console.log('status:', this.state.status)
     })
   }
 
@@ -53,15 +49,15 @@ class GuideDetails extends Component {
     if (this.state.status === 'added') {
       return (
         <div> 
-        <form onSubmit={this.handleSubmit} action="">
+        <form onSubmit={this.handleSubmit} action="" className="interested-form">
         <button className="btn-interested" type="submit">I'm not interested anymore</button>
         </form>
-        <p><a href={`mailto:${this.state.guide.owner.email}`} target="_top">Send Mail</a> or <a href={`whatsapp://send?abid=${this.state.guide.owner.phone}&text=Hello%2C%20World!`}>Send Message</a></p>
+        <p className="contact-text"><a className="contact-details" href={`mailto:${this.state.guide.owner.email}`} target="_top">Send Mail</a> or <a className="contact-details" href={`whatsapp://send?abid=${this.state.guide.owner.phone}&text=Hello%2C%20World!`}>Send Message</a></p>
         </div>
       )
     } else {
       return (
-        <form onSubmit={this.handleSubmit} action="">
+        <form onSubmit={this.handleSubmit} action="" className="interested-form">
         <button className="btn-interested" type="submit">I'm interested</button>
         </form>
       )
@@ -80,10 +76,10 @@ class GuideDetails extends Component {
 
     return (
       <section className="guide-details">
-        <h2>{guide.name}</h2>
-        <p>{guide.expertise}</p>
-        <p>Created by: <Link to={`/profile/${guide.owner._id}`}>{guide.owner.username}</Link></p>
-        <p>{guide.description}</p>
+        <h2 className="card-title">{guide.title}</h2>
+        <p><span className="underlined-span">Created by:</span> <Link to={`/profile/${guide.owner._id}`} className="guide-owner-text">{guide.owner.username}</Link></p>
+        <p><span className="underlined-span">User's expertise:</span> {guide.owner.expertise}</p>
+        <p id="guide-description">"{guide.description}"</p>
         {this.handleSaved()}
       </section>
      );

@@ -74,16 +74,16 @@ class Profile extends Component {
       return (
         <form onSubmit={this.handleEditProfile}>
           <div className="my-info">
-            Your expertise:
-        <input type="text" value={expertise} onChange={this.handleWriting} name='expertise' />
+            <span className="bold-span">Your expertise:</span>
+            <input type="text" value={expertise} onChange={this.handleWriting} name='expertise' />
           </div>
           <div className="my-info">
-            E-mail:
-        <input type="text" value={email} onChange={this.handleWriting} name='email' />
+            <span className="bold-span">E-mail:</span>
+            <input type="text" value={email} onChange={this.handleWriting} name='email' />
           </div>
           <div className="my-info">
-            Phone:
-        <input type="text" value={phone} onChange={this.handleWriting} name='phone' />
+            <span className="bold-span">Phone:</span>
+            <input type="text" value={phone} onChange={this.handleWriting} name='phone' />
           </div>
           <button type="submit" className="edit-profile-btn">Submit</button>
         </form>
@@ -92,15 +92,15 @@ class Profile extends Component {
       return (
         <div>
           <div className="my-info">
-            Your expertise:
-          <p className="info-text">{this.state.user.expertise}</p>
+            <span className="bold-span">Your expertise:</span>
+            <p className="info-text">{this.state.user.expertise}</p>
           </div>
           <div className="my-info">
-            E-mail:
+            <span className="bold-span">E-mail:</span>
             <p className="info-text">{this.state.user.email}</p>
           </div>
           <div>
-            Phone:
+            <span className="bold-span">Phone:</span>
             <p className="info-text">{this.state.user.phone}</p>
           </div>
         </div>
@@ -133,14 +133,16 @@ class Profile extends Component {
         {this.handleEditing()}
         <div className="my-guides">
           <h3 className="my-guides-title">Your guides [{this.state.user.guides.length}]</h3>
-          <Link to="/guides-list/create">Create guide</Link>
+          <Link to="/guides-list/create" className="btn">Create</Link>
           {this.state.user.guides.map((guide, index) => {
             return <div key={index} className="guide-card-container">
-              <Link to={`/guides-list/${guide._id}`}><GuideCard key={guide._id} info={guide} /></Link>
-              <Link to={`/guides-list/edit/${guide._id}`}>Edit</Link>
-              <form onSubmit={this.onSubmit} id={guide._id}>
-                <button type="submit">Delete</button>
-              </form>
+              <GuideCard key={guide._id} info={guide} />
+              <div className="delete-edit-container">
+                <Link to={`/guides-list/edit/${guide._id}`} className="btn">&#9998;</Link>
+                <form onSubmit={this.onSubmit} id={guide._id}>
+                  <button type="submit">&#10006;</button>
+                </form>
+              </div>
             </div>
           })}
         </div>
