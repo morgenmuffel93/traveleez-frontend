@@ -11,8 +11,8 @@ class Auth {
   signup(user) {
     const { username, password } = user;
     return this.auth.post('/auth/signup', {username, password})
-      .then(({ data }) => {
-        return data});
+          .then(({ data }) => {
+            return data});
   }
 
   login(user) {

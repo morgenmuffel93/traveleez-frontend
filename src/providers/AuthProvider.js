@@ -32,6 +32,7 @@ class AuthProvider extends Component {
     isLoading: true
   }
 
+  
   componentDidMount() {
     auth.me()
       .then((user) => {

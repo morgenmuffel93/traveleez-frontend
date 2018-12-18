@@ -8,28 +8,38 @@ class Signup extends Component {
   state = {
     username: "",
     password: "",
-    error: "",
+    error:""
   };
 
   handleFormSubmit = (event) => {
     event.preventDefault();
     const username = this.state.username;
     const password = this.state.password;
+    if(username.includes('^[a-z A-Z 0-9 @]\\.')){
+      return this.setState({
+            error: 'You cannot use special characters',
+      })} else if(password.length < 6){
+              return this.setState({
+                    error: 'Password Must be 6 characters or longer',
+              })}
+          else{
 
-    auth.signup({ username, password })
-      .then( (user) => {
-        this.setState({
-            username: "",
-            password: "",
-        });
-        this.props.setUser(user)
-      })
-      .catch( error => {
-        this.setState({
-          error: error.response.data.error,
-        })
-      } )
+            auth.signup({ username, password })
+              .then( (user) => {
+                this.setState({
+                    username: "",
+                    password: "",
+                });
+                this.props.setUser(user)
+              })
+              .catch(error => 
+                this.setState({
+                  error: error.response.data.error,
+                })
+                )
+            }
   }
+
 
   handleChange = (event) => {  
     const {name, value} = event.target;
@@ -60,6 +70,7 @@ class Signup extends Component {
             <button type="submit">Signup</button>
           </form>
         </div>
+        <p className="error">{this.state.error}</p>
         <p className="account-change">Already have an account? <br/><Link to="/login">Log in</Link></p>
       </section>
     )
