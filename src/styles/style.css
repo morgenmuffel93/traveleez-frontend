@@ -62,7 +62,7 @@ h3 {
 /* ---- layout ---- */
 
 section {
-  padding: 0px 20px 0px 20px;
+  padding: 60px 20px 60px 20px;
 }
 
 p {
@@ -127,19 +127,33 @@ nav {
   display: flex;
   flex-direction: row;
   width: 100%;
+  justify-content: space-between;
 }
 
 .input{
   margin: 1%;
-  border: 2px;
+  border: 1px solid #6b6b6b24;
   color: #6b6b6b;
-  max-width: 180px;
+  max-width: 55%;
   height: 40px;
+  margin-right: 0;
+}
+
+.clear-search-btn {
+  height: 40px;
+  border: 1px solid #6b6b6b24;
+  border-left: none;
+  color: lightgrey;
+  margin-top: 3px;
 }
 
 .nav-userinfo {
   display: flex;
   flex-direction: column;
+  width: 170px;
+  text-align: right;
+  padding-right: 8px;
+  padding-top: 3px;
 }
 
 #text-userinfo {
@@ -263,7 +277,6 @@ footer {
 
 /* Guide details when you click on one */
 .guide-details {
-  margin-top: 70px;
   display: flex;
   flex-direction: column;
 }
@@ -356,7 +369,7 @@ footer {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 10px;
+  padding-top: 40px;
 }
 .speech-section button {
   color: #71b48d;

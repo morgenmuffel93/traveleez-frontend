@@ -8,13 +8,27 @@ class Navbar extends Component {
     search: '',
     locations: [],
     searchHappening: false,
+  }
 
+  handleDeleteSearch = () => {
+    if (this.state.search.length > 0) {
+      return <div>
+        <button onClick={this.clearSearch} className="clear-search-btn">X</button>
+      </div>
+    }
+  }
+
+  clearSearch = () => {
+    this.setState({
+      search: '',
+    })
+    this.props.onUpdate('')
   }
 
   renderIsLoggedIn = () => {
     return <div className="nav-container">
-      <input type="text" className="input" placeholder="Search Location..." onChange={this.handleSearch} name="search" value={this.state.search} />
-     
+      <input type="text" className="input" placeholder="Search..." onChange={this.handleSearch} name="search" value={this.state.search} />
+      {this.handleDeleteSearch()}
       <div className="nav-userinfo">
         <p id="text-userinfo">{this.props.user.username}</p>
         <p id="text-userinfo" onClick={this.props.logout}>Logout</p>
@@ -35,7 +49,7 @@ class Navbar extends Component {
     })
 
     if (value.length > 2) {
-     
+
       this.setState({
         searchHappening: true,
       })
@@ -52,9 +66,9 @@ class Navbar extends Component {
 
   }
 
-  
+
   handleSearch = (event) => {
-    
+
     this.setState({
       search: event.target.value,
     })
@@ -67,23 +81,31 @@ class Navbar extends Component {
       locations: [],
     })
     this.props.onUpdate(value.location.toLowerCase())
-    }
+  }
 
   render() {
-    const {locations} = this.state
-    return (
+    const { locations } = this.state
+    if (locations.length > 0) {
+      return (
+        <nav>
+          {this.props.isLogged ? this.renderIsLoggedIn() : this.renderIsNotLoggedIn()}
+          <div className='location-list'>
+            {locations.map((location) => {
+              return <li key={location.name} className={'location-drop'} value={location} onClick={() => { this.takeValue({ location }) }}>
+                {location}</li>
+
+            })}
+          </div>
+        </nav>
+      )
+    } else {
+      return (        
       <nav>
         {this.props.isLogged ? this.renderIsLoggedIn() : this.renderIsNotLoggedIn()}
-        <div className='location-list'>
-        {locations.map((location) => {
-                return <li key={location.name} className={'location-drop'}value={location} onClick={() => {this.takeValue({location})}}>
-                {location}</li>
-                
-        })}
-        </div>
-      </nav>
-    )
+      </nav>)
+    }
   }
 }
+
 
 export default withAuth(Navbar);
