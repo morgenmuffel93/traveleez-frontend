@@ -12,6 +12,7 @@ class Auth {
     const { username, password } = user;
     return this.auth.post('/auth/signup', {username, password})
           .then(({ data }) => {
+            console.log('got here')
             return data});
   }
 
@@ -19,6 +20,7 @@ class Auth {
     const { username, password } = user;
     return this.auth.post('/auth/login', {username, password})
     .then(({ data }) => {
+      console.log('got here')
       return data});
   }
 

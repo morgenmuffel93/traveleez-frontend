@@ -26,7 +26,7 @@ class GuideCard extends Component {
           </div>
         </div>
         <div>
-        <Link to={`/guides-list/${this.props.info._id}`} class="guide-see-more">See more...</Link>
+        <Link to={`/guides-list/${this.props.info._id}`} className="guide-see-more">See more...</Link>
         </div>
       </div>
     );

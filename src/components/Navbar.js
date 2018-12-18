@@ -16,7 +16,7 @@ class Navbar extends Component {
       <input type="text" className="input" placeholder="Search Location..." onChange={this.handleSearch} name="search" value={this.state.search} />
      
       <div className="nav-userinfo">
-        <p id="text-userinfo">username: {this.props.user.username}</p>
+        <p id="text-userinfo">{this.props.user.username}</p>
         <p id="text-userinfo" onClick={this.props.logout}>Logout</p>
       </div>
     </div>
@@ -54,6 +54,7 @@ class Navbar extends Component {
 
   
   handleSearch = (event) => {
+    
     this.setState({
       search: event.target.value,
     })
@@ -65,7 +66,9 @@ class Navbar extends Component {
       search: value.location,
       locations: [],
     })
-  }
+    this.props.onUpdate(value.location.toLowerCase())
+    }
+
   render() {
     const {locations} = this.state
     return (

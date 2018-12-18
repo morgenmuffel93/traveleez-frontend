@@ -3,6 +3,7 @@ import GuideService from '../lib/guides-service'
 import { Link } from 'react-router-dom'
 import GuideCard from './GuideCard';
 
+import { LocationsConsumer } from "../providers/LocationsProvider";
 
 class GuidesList extends Component {
   state = {
@@ -47,17 +48,25 @@ class GuidesList extends Component {
       return <div>isLoading</div>
     }
     return (
-      <section className="guide-list">
-      <h2>List of guides</h2>
-      <Link to="/guides-list/create" className="btn">Create your own</Link>
-        {this.state.guides.map((guide, index) => {
-          return (
-            <div key={index} className="guide-card-container">
-                <Link to={`/guides-list/${guide._id}`}><GuideCard key ={guide._id} info = {guide}/></Link>
-                </div>
-          )}
-        )}
-      </section>
+      <LocationsConsumer>
+      { location => {
+        console.log("my Value", location)
+        return (
+          <section className="guide-list">
+            <h2>List of guides</h2>
+            <Link to="/guides-list/create" className="btn">Create your own</Link>
+            {this.state.guides.map((guide, index) => {
+              return (
+                <div key={index} className="guide-card-container">
+                    <GuideCard key ={guide._id} info = {guide}/>
+                    </div>
+              )}
+            )}
+          </section>
+        )
+      }}
+      
+      </LocationsConsumer>
     );
   }
 }
