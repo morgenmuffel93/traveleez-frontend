@@ -3026,7 +3026,11 @@ let places = [{
     'country': 'Spain',
     'geonameid': 3128760,
     'name': 'Barcelona',
-    'subcountry': 'Catalonia'
+    'subcountry': 'Catalonia',
+    'taxi': '902 90 75 08',
+    'bus': 'https://www.tmb.cat/en/barcelona-transport',
+    'train': 'http://www.renfe.com/EN/viajeros/cercanias/barcelona/',
+
   },
   {
     'country': 'Spain',
