@@ -51,7 +51,6 @@ class GuidesList extends Component {
     return (
       <LocationsConsumer>
         {locationValue => {
-          console.log('location in list guides', locationValue)
           let filteredGuides = this.state.guides;
 
           if (locationValue) {

@@ -19,7 +19,6 @@ class Login extends Component {
             error: 'You cannot use special characters',
       })}
        else {
-         console.log("firing")
           auth.login({ username, password })
             .then((user) => {
               this.props.setUser(user);

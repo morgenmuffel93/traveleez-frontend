@@ -31,7 +31,6 @@ class App extends Component {
   }
 
   updateLocation = (location) => {
-    console.log('original value', location)
     return this.setState({
       searchValue: location,
     })
@@ -56,6 +55,7 @@ class App extends Component {
                 <PrivateRoute exact path="/guides-list/edit/:id" component={EditGuide} />
                 <PrivateRoute exact path="/guides-list/:id" component={GuideDetails} />
                 <PrivateRoute exact path="/guides-list" component={GuidesList} />
+                <PrivateRoute exact path="/transport" component={Transport} />
             </Switch>
             <Footer/>
         </AuthProvider>

@@ -76,13 +76,9 @@ class EditGuide extends Component {
             <input type="text" placeholder="Title" name="title" className="create-edit-input" onChange={this.handleOnChange} value={title} />
             <input type="text" placeholder="Description" name="description" className="create-edit-input desc" onChange={this.handleOnChange} value={description} />
             <input type="text" placeholder="Location" name="location" className="create-edit-input" onChange={this.handleOnChange} value={location} />
-            <input type="text" placeholder="Expertise" name="expertise" className="create-edit-input" onChange={this.handleOnChange} value={expertise} />
             <input type="text" placeholder="Date" name="date" className="create-edit-input" onChange={this.handleOnChange} value={date} />
             <input type="text" placeholder="Time" name="time" className="create-edit-input" onChange={this.handleOnChange} value={time} />
-            <div className="duration-container">
-              <p>Duration</p><input type="time" placeholder="hh" name="duration" className="duration-input" onChange={this.handleOnChange} value={duration} />
-            </div>
-            <button type="submit">Edit</button>
+            <button type="submit" className="btn-create">Edit</button>
           </form>
         </div>
       </section>

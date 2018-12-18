@@ -45,8 +45,10 @@ h1 {
   border-bottom: 2px solid;
   padding: 8px;
   font-family: 'Major Mono Display', monospace;
-
+  padding-bottom: 3px;
+  height: 60px;
 }
+
 h2 {
   font-size: 30px;
   margin-bottom: 10px;
@@ -62,7 +64,7 @@ h3 {
 /* ---- layout ---- */
 
 section {
-  padding: 60px 20px 60px 20px;
+  padding: 40px 20px 60px 20px;
 }
 
 p {
@@ -185,7 +187,7 @@ footer {
   justify-content: space-around;
   transition: transform 1s;
   background-image: linear-gradient(to bottom, #E1F2d7, #71B48D);
-  padding: 70px 20px 10px 20px;
+  padding: 60px 20px 10px 20px;
   height: 520px;
   
 }
@@ -369,7 +371,7 @@ footer {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 40px;
+  padding-top: 30px;
 }
 .speech-section button {
   color: #71b48d;
@@ -458,7 +460,7 @@ footer {
 /* Create or edit guide */
 
 .create-edit-section {
-
+  padding: 60px 20px 60px 20px;
 }
 
 .create-edit-form-container {
@@ -466,7 +468,8 @@ footer {
   flex-direction: column;
   align-items: center;
   border: 1px solid black;
-  height: 440px;
+  height: 350px;
+  margin-top: 40px;
 }
 
 .create-edit-form {
@@ -479,6 +482,10 @@ footer {
   margin-top: 10px;
   border: 0px;
   border-bottom: 1px solid black;
+}
+
+.btn-create {
+  margin-top: 20px;
 }
 
 .duration-container {
