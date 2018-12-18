@@ -104,7 +104,7 @@ class SpeechToTextDemo extends Component {
   }
 
   render() {
-    const { error, interimText, finalisedText, listening } = this.state;
+    const { error, interimText, listening } = this.state;
 
     let content;
     if (error) {
@@ -117,13 +117,13 @@ class SpeechToTextDemo extends Component {
       if (listening) {
         buttonForListening = (
           <button onClick={() => this.stopListening()}>
-            Stop Listening &#127908;
+            Stop Listening <span role="img" aria-label="stop Listening">&#127908;</span>
           </button>
         );
       } else {
         buttonForListening = (
           <button onClick={() => this.startListening()}>
-            Start Listening &#127908;
+            Start Listening <span role="img" aria-label="stop Listening">&#127908;</span>
           </button>
         );
       }

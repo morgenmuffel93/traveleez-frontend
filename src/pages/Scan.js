@@ -30,7 +30,7 @@ class Scan extends Component {
       fileName: event.target.files[0].name,
     }, () => {
 
-      let base64String = '';
+      //let base64String = '';
       this.toBase64(this.state.selectedFile, (result) => {
         let base64String = result.split(",")
 

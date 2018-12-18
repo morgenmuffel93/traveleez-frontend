@@ -41,7 +41,7 @@ class Homesick extends Component {
       <section className="home-sick">
         <div className='cat-container'>
         {cats.map((cat, index) => {
-                return <img key={index} src={`https://placekitten.com/${cat.x}/${cat.y}`} />
+                return <img key={index} alt="kitten" src={`https://placekitten.com/${cat.x}/${cat.y}`} />
         })}
         
         </div>
