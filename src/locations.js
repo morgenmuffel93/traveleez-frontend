@@ -3028,7 +3028,7 @@ let places = [{
     'name': 'Barcelona',
     'subcountry': 'Catalonia',
     'taxi': '902 90 75 08',
-    'bus': 'https://www.tmb.cat/en/barcelona-transport',
+    'bus': 'http://www.tmb.cat/ca/home/',
     'train': 'http://www.renfe.com/EN/viajeros/cercanias/barcelona/',
 
   },

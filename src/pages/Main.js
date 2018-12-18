@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import InfoCard from './InfoCard'
 import { Link } from 'react-router-dom'
 import Transition from 'react-transition-group/Transition';
-import { isAbsolute } from 'path';
+//import { isAbsolute } from 'path';
 
 class Main extends Component {
   state = {

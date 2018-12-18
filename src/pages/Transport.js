@@ -1,43 +1,52 @@
 import React, { Component } from 'react';
-
+import { LocationsConsumer } from "../providers/LocationsProvider";
+import places from '../locations'
 
 class Transport extends Component {
-        state = {
-            location: '',
-            isLoading: true,
-        }
-    
-    componentDidMount(){
-           
-        this.setState({
-            isLoading: false,
-        })
-    }
-    
-  
+	state = {
+		location: '',
+		isLoading: true,
+	}
 
-  
+	componentDidMount() {
+		this.setState({
+			isLoading: false,
 
-  render() {
+		})
+	}
 
-    if(this.state.isLoading){
-        return <div>is Loading . . .</div>
-    }
-    return (
-      <section className="transport">
+	render() {
+		const { isLoading } = this.state;
+		if (isLoading) {
+			return <div>isLoading</div>
+		}
+		return (
+			<LocationsConsumer>
+				{location => {
+					return places.map((place, index) => {
+						if (place.name.toLowerCase() === location) {
+							console.log(place.name)
+							return <div key={index} className="place-info-container">
+									<h2>Taxi</h2>
+									<p>{place.taxi}</p>
+									<h2>Bus</h2>
+									<p>{place.bus}</p>
+								
+									<h2>Train</h2>
+									<p>{place.train}</p>
+	
 
-        <h2>Taxi:</h2>
-        <p>{this.state.location}</p>
-        <h2>Train:</h2>
-        <p>{this.state.location}</p>
-        <h2>Bus:</h2>
-        <p>{this.state.location}</p>
+								</div>
+							
+						}
+						return place
+					})
 
-       
-     
-      </section>
-    );
-  }
+				}}
+
+			</LocationsConsumer>
+		);
+	}
 }
 
 export default Transport;

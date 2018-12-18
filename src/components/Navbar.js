@@ -75,8 +75,8 @@ class Navbar extends Component {
       <nav>
         {this.props.isLogged ? this.renderIsLoggedIn() : this.renderIsNotLoggedIn()}
         <div className='location-list'>
-        {locations.map((location) => {
-                return <li key={location.name} className={'location-drop'}value={location} onClick={() => {this.takeValue({location})}}>
+        {locations.map((location, index) => {
+                return <li key={index} className={'location-drop'}value={location} onClick={() => {this.takeValue({location})}}>
                 {location}</li>
                 
         })}

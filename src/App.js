@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, Switch } from 'react-router-dom'
+import { Switch } from 'react-router-dom'
 import './styles/style.css';
 
 import Navbar from './components/Navbar';
@@ -31,7 +31,6 @@ class App extends Component {
   }
 
   updateLocation = (location) => {
-    console.log('original value', location)
     return this.setState({
       searchValue: location,
     })
@@ -50,6 +49,7 @@ class App extends Component {
                 <PrivateRoute exact path="/scan" component={Scan} />
                 <PrivateRoute exact path="/speech" component={Speech} />
                 <PrivateRoute exact path="/homesick" component={HomeSick} />
+                <PrivateRoute exact path="/transport" component={Transport} />
                 <PrivateRoute exact path="/my" component={MyProfile} />
                 <PrivateRoute exact path="/profile/:id" component={UserProfile} />
                 <PrivateRoute exact path="/guides-list/create" component={CreateGuide} />
