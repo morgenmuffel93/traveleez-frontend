@@ -12,7 +12,6 @@ class Transport extends Component {
 		this.setState({
 			isLoading: false,
     })
-    console.log('heyy')
 	}
 
   render() {

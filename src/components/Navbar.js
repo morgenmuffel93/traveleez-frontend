@@ -99,20 +99,13 @@ class Navbar extends Component {
         </nav>
       )
     } else {
-      return (        
-      <nav>
-        {this.props.isLogged ? this.renderIsLoggedIn() : this.renderIsNotLoggedIn()}
-        <div className='location-list'>
-        {locations.map((location, index) => {
-                return <li key={index} className={'location-drop'}value={location} onClick={() => {this.takeValue({location})}}>
-                {location}</li>
-                
-        })}
-        </div>
-      </nav>
-    )
+      return (
+        <nav>
+          {this.props.isLogged ? this.renderIsLoggedIn() : this.renderIsNotLoggedIn()}
+        </nav>
+      )
+    }
   }
 }
-
 
 export default withAuth(Navbar);

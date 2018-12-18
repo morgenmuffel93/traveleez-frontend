@@ -8,7 +8,7 @@ class SpeechToTextDemo extends Component {
   state = {
     error: '',
     interimText: '',
-    finalisedText: [],
+    finalisedText: '',
     listening: false,
     translation: '',
     readBack: '',
@@ -27,9 +27,10 @@ class SpeechToTextDemo extends Component {
     };
 
     const onFinalised = text => {
+      text = text.charAt(0).toUpperCase() + text.slice(1)
 
       this.setState({
-        finalisedText: [...this.state.finalisedText, text],
+        finalisedText: this.state.finalisedText + `${text}. `,
         interimText: ''
       });
     };
@@ -58,13 +59,13 @@ class SpeechToTextDemo extends Component {
 
   translateHandler = () => {
 
-    let joined = this.state.finalisedText.join('. ')
+    let joined = this.state.finalisedText
     let googleTarget = this.state.target.replace(/-[a-z][a-z]/, '')
 
     axios.post(`https://translation.googleapis.com/language/translate/v2?key=AIzaSyAkNyUzuGnqGuOtK-meyLLydVTPECloI14&q=${joined}&target=${googleTarget}`)
       .then((response) => {
         this.setState({
-          finalisedText: [response.data.data.translations[0].translatedText],
+          finalisedText: response.data.data.translations[0].translatedText,
         })
       })
   }
