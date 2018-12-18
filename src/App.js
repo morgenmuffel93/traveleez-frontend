@@ -19,6 +19,7 @@ import CreateGuide from './pages/CreateGuide';
 import EditGuide from './pages/EditGuide';
 import GuideDetails from './pages/GuideDetails';
 import UserProfile from './pages/UserProfile';
+import Transport from './pages/Transport';
 
 
 class App extends Component {
@@ -33,6 +34,7 @@ class App extends Component {
               <PrivateRoute exact path="/scan" component={Scan} />
               <PrivateRoute exact path="/speech" component={Speech} />
               <PrivateRoute exact path="/homesick" component={HomeSick} />
+              <PrivateRoute exact path="/transport" component={Transport} />
               <PrivateRoute exact path="/my" component={MyProfile} />
               <PrivateRoute exact path="/profile/:id" component={UserProfile} />
               <PrivateRoute exact path="/guides-list/create" component={CreateGuide} />
