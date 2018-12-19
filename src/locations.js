@@ -2684,7 +2684,11 @@ let places = [{
     'country': 'Spain',
     'geonameid': 3121424,
     'name': 'Gijón',
-    'subcountry': 'Asturias'
+    'subcountry': 'Asturias',
+    'picture': 'https://i.imgur.com/JggQgpd.png',
+    'taxi': '985 34 66 66',
+    'bus': 'https://bus.gijon.es/',
+    'train': 'http://www.renfe.com/viajeros/cercanias/asturias/catalogo/gijon_home.html',
   },
   {
     'country': 'Spain',
@@ -3030,6 +3034,7 @@ let places = [{
     'taxi': '902 90 75 08',
     'bus': 'http://www.tmb.cat/ca/home/',
     'train': 'http://www.renfe.com/EN/viajeros/cercanias/barcelona/',
+    'picture': 'https://images.unsplash.com/photo-1523531294919-4bcd7c65e216?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80'
 
   },
   {

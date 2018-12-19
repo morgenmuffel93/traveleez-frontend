@@ -81,6 +81,7 @@ button, .btn {
   background-color: white;
   height: 30px;
   padding: 0px 7px;
+  margin-bottom: 10px;
 }
 
 
@@ -112,6 +113,10 @@ textarea {
   margin-bottom: 10px;
 }
 
+.link-green {
+  color: #71B48D;
+}
+
 /* ---- components ---- */
 
 nav {
@@ -120,6 +125,15 @@ nav {
   background-color:  #FCFCF9;
   max-height: 50px;
   width: 100%;
+}
+
+.login-or-signup {
+  display: flex;
+  flex-direction: row;
+  height: 30px;
+}
+.or {
+  margin-top: 0;
 }
 
 .nav-container {
@@ -169,6 +183,10 @@ footer {
   display: flex;
   justify-content: space-around;
   background-color: #FCFCF9;
+}
+
+.traveleez {
+  padding-top: 10px;
 }
 
 .footer-img {
@@ -229,30 +247,58 @@ footer {
   align-items: center;
 }
 
+.guide-list-container {
+  width: 107%;
+  margin: 0px;
+  padding: 0px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.city-img {
+  max-width: 100%;
+}
+
+.guides-main-img-container {
+  width: 114%;
+}
+
+.city-name-title {
+  margin-top: 3px;
+  margin-bottom: 17px;
+  text-align: left;
+  padding-left: 4px;
+}
 
 /* Each card in the guide list */
 
 .guide-card-container {
-  width: 95%;
+  width: 49%;
 }
 .card-title {
-  color: #71B48D;
+  color: #558468;
 }
 
 .guide-card {
-  border: 1px solid gray;
-  border-radius: 10%;
+  border: 1px solid #71b48d29;
+  /* border-radius: 10%; */
   margin-top: 15px;
-  margin-bottom: 15px;
   background-color: white;
-  padding: 0px 15px 15px 15px;
-  background-color: #e8f2e84f;
+  padding: 0px 8px 8px 8px;
+  background-color: #e8f2e824;
+  box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.18);
+  height: 190px;
+  display: flex;
+  flex-direction: column;
 }
+
 
 .card-when-container {
   display: flex;
-  width: 100%;
   margin-bottom: 5px;
+  position: absolute;
+  margin-top: 95px;
 }
 
 .card-where {
@@ -264,15 +310,27 @@ footer {
   width: 36%;
 }
 
+#card-when-text {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
 .card-where-title {
   width: 30%;
 }
 
+.see-more-container {
+  position: absolute;
+  margin-top: 160px;
+  align-self: flex-end;
+}
+
 .guide-see-more {
-  padding-left: 120px;
+  font-size: 18px;
   font-family: 'Roboto Slab', serif;
   color: #71B48D;
 }
+
 
 /* Guide details when you click on one */
 .guide-details {
@@ -435,8 +493,9 @@ footer {
 
 .delete-edit-container {
   display: flex;
-  width: 30%;
-  margin-left: 90px;
+  width: 60%;
+  margin-left: 25px;
+  margin-top: 10px;
   padding-bottom: 20px;
   justify-content: space-around;
 }

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import GuideService from '../lib/guides-service'
 import { Link } from 'react-router-dom'
 import GuideCard from './GuideCard';
+import places from '../locations'
 
 import { LocationsConsumer } from "../providers/LocationsProvider";
 
@@ -41,7 +42,32 @@ class GuidesList extends Component {
       })
   }
 
+  checkImageAndTitle = (locationValue) => {
+    let locationInfo = [];
 
+    if (locationValue) {
+      locationInfo = places.filter(place => {
+        return place.name.toLowerCase().includes(locationValue);
+      }
+      )
+    }
+    if (locationInfo.length > 0) {
+      return (
+        <div class="guides-main-img-container">
+          <img src={locationInfo[0].picture} alt="City" className="city-img" />
+          <h2 className="city-name-title">{locationInfo[0].name}</h2>
+        </div>
+      )
+    } else {
+      return (
+        <div class="guides-main-img-container">
+          <img src='https://images.unsplash.com/photo-1492129214534-08dd697407ec?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80' alt="City" className="city-img" />
+          <h2 className="city-name-title">Explore guides</h2>
+        </div>
+      )
+    }
+
+  }
 
   render() {
     const { isLoading } = this.state;
@@ -53,25 +79,27 @@ class GuidesList extends Component {
         {locationValue => {
           let filteredGuides = this.state.guides;
 
+
           if (locationValue) {
             filteredGuides = this.state.guides.filter(guide => {
               return guide.location.toLowerCase().includes(locationValue);
             }
             )
           }
-
           return (
             <section className="guide-list">
-              <h2>List of guides</h2>
+              {this.checkImageAndTitle(locationValue)}
               <Link to="/guides-list/create" className="btn">Create your own</Link>
-              {filteredGuides.map((guide, index) => {
-                return (
-                  <div key={index} className="guide-card-container">
-                    <GuideCard key={guide._id} info={guide} />
-                  </div>
-                )
-              }
-              )}
+              <div class="guide-list-container">
+                {filteredGuides.map((guide, index) => {
+                  return (
+                    <div key={index} className="guide-card-container">
+                      <GuideCard key={guide._id} info={guide} />
+                    </div>
+                  )
+                }
+                )}
+              </div>
             </section>
           )
         }}

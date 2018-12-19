@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import auth from '../lib/auth-service';
 
 const AuthContext = React.createContext();

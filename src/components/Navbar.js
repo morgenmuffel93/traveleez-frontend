@@ -27,7 +27,7 @@ class Navbar extends Component {
 
   renderIsLoggedIn = () => {
     return <div className="nav-container">
-      <input type="text" className="input" placeholder="Search..." onChange={this.handleSearch} name="search" value={this.state.search} />
+      <input type="text" className="input" placeholder="Type your location" onChange={this.handleSearch} name="search" value={this.state.search} />
       {this.handleDeleteSearch()}
       <div className="nav-userinfo">
         <p id="text-userinfo">{this.props.user.username}</p>
@@ -37,9 +37,10 @@ class Navbar extends Component {
   }
 
   renderIsNotLoggedIn = () => {
-    return <div>
-      <Link to='/login'>Login</Link>
-      <Link to='/signup'>Signup</Link>
+    return <div class="login-or-signup">
+      <Link to='/login' className="link-green">Login</Link>
+      <p className="or">&nbsp;or&nbsp;</p>
+      <Link to='/signup' className="link-green">Signup</Link>
     </div>
   }
 

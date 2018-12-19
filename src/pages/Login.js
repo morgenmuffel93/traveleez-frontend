@@ -67,7 +67,7 @@ class Login extends Component {
           </form>
         </div>
             <p className="error">{this.state.error}</p>
-        <p className="account-change">Not a member? <br/><Link to="/signup">Sign up</Link></p>
+        <p className="account-change">Not a member? <br/><Link to="/signup" className="link-green">Sign up</Link></p>
       </section>
     )
   }

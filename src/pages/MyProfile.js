@@ -134,17 +134,19 @@ class Profile extends Component {
         <div className="my-guides">
           <h3 className="my-guides-title">Your guides [{this.state.user.guides.length}]</h3>
           <Link to="/guides-list/create" className="btn">Create</Link>
-          {this.state.user.guides.map((guide, index) => {
-            return <div key={index} className="guide-card-container">
-              <GuideCard key={guide._id} info={guide} />
-              <div className="delete-edit-container">
-                <Link to={`/guides-list/edit/${guide._id}`} className="btn">&#9998;</Link>
-                <form onSubmit={this.onSubmit} id={guide._id}>
-                  <button type="submit">&#10006;</button>
-                </form>
+          <div class="guide-list-container">
+            {this.state.user.guides.map((guide, index) => {
+              return <div key={index} className="guide-card-container">
+                <GuideCard key={guide._id} info={guide} />
+                <div className="delete-edit-container">
+                  <Link to={`/guides-list/edit/${guide._id}`} className="btn">&#9998;</Link>
+                  <form onSubmit={this.onSubmit} id={guide._id}>
+                    <button type="submit">&#10006;</button>
+                  </form>
+                </div>
               </div>
-            </div>
-          })}
+            })}
+          </div>
         </div>
       </section>
     );

@@ -20,6 +20,7 @@ class GuideApi {
       .then(({ data }) => {
         return data
       })
+      
   }
 
   createGuide(data) {

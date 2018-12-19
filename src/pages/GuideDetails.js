@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom'
 class GuideDetails extends Component {
   state = {
     guide: {},
+    user: {},
     isLoading: true,
     status: '',
   }
@@ -13,18 +14,20 @@ class GuideDetails extends Component {
   componentDidMount() {
     GuideService.getGuideDetails(this.props.match.params.id)
       .then((response) => {
-        if (response.user.savedForLater.indexOf(response.guide._id) >= 0) {
+        if (response.user[0].savedForLater.indexOf(response.guide._id) >= 0) {
           this.setState({
             guide: response.guide,
             isLoading: false,
-            status: 'added'
+            status: 'added',
+            user: response.user[0],
             })
 
         } else {
           this.setState({
             guide: response.guide,
             isLoading: false,
-            status: ''
+            status: '',
+            user: response.user[0]
             })
         }
       })
@@ -52,7 +55,7 @@ class GuideDetails extends Component {
         <form onSubmit={this.handleSubmit} action="" className="interested-form">
         <button className="btn-interested" type="submit">I'm not interested anymore</button>
         </form>
-        <p className="contact-text"><a className="contact-details" href={`mailto:${this.state.guide.owner.email}`} target="_top">Send Mail</a> or <a className="contact-details" href={`whatsapp://send?abid=${this.state.guide.owner.phone}&text=Hello%2C%20World!`}>Send Message</a></p>
+        <p className="contact-text"><a className="contact-details" href={`mailto:${this.state.user.email}`} target="_top">Send Mail</a> or <a className="contact-details" href={`whatsapp://send?abid=${this.state.user.phone}&text=Hello%2C%20World!`}>Send Message</a></p>
         </div>
       )
     } else {
@@ -67,6 +70,7 @@ class GuideDetails extends Component {
   render() {
     
     const { guide } = this.state;
+    const { user } = this.state;
 
     if (this.state.isLoading) {
       return (
@@ -77,8 +81,8 @@ class GuideDetails extends Component {
     return (
       <section className="guide-details">
         <h2 className="card-title">{guide.title}</h2>
-        <p><span className="underlined-span">Created by:</span> <Link to={`/profile/${guide.owner._id}`} className="guide-owner-text">{guide.owner.username}</Link></p>
-        <p><span className="underlined-span">User's expertise:</span> {guide.owner.expertise}</p>
+        <p><span className="underlined-span">Created by:</span> <Link to={`/profile/${user._id}`} className="guide-owner-text">{user.username}</Link></p>
+        <p><span className="underlined-span">User's expertise:</span> {user.expertise}</p>
         <p id="guide-description">"{guide.description}"</p>
         {this.handleSaved()}
       </section>

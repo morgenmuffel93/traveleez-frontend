@@ -8,14 +8,14 @@ class Profile extends Component {
     user: {},
     isLoading: true,
   }
-  
+
   componentDidMount() {
     ProfileService.getOtherUserInfo(this.props.match.params.id)
       .then((user) => {
         this.setState({
           user,
           isLoading: false,
-          })
+        })
       })
       .catch((error) => {
         this.setState({
@@ -27,9 +27,9 @@ class Profile extends Component {
   render() {
     const { user } = this.state;
 
-  if (this.state.isLoading) {
-    return <div>Loading...</div>
-  }
+    if (this.state.isLoading) {
+      return <div>Loading...</div>
+    }
 
     return (
       <section className="my-profile">
@@ -38,13 +38,16 @@ class Profile extends Component {
         <div className="my-guides">
           <h3 className="my-guides-title">User guides</h3>
           <button>Create your own guide</button>
-          {user.guides.map((guide, index) => {
-          return (
-            <div key={index} className="guide-card-container">
-                <Link to={`/guides-list/${guide._id}`}><GuideCard key ={guide._id} info = {guide}/></Link>
+          <div class="guide-list-container">
+            {user.guides.map((guide, index) => {
+              return (
+                <div key={index} className="guide-card-container">
+                  <Link to={`/guides-list/${guide._id}`}><GuideCard key={guide._id} info={guide} /></Link>
                 </div>
-          )}
-        )}
+              )
+            }
+            )}
+          </div>
         </div>
       </section>
     );
