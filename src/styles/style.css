@@ -84,7 +84,21 @@ button, .btn {
   margin-bottom: 10px;
 }
 
+.train-card-container {
+  width: 80%;
+}
+.transport-info {
+  box-shadow: 1px 1px 1px 1px #0000002e;
+  padding: 2%;
+  text-align: center;
+  border-radius: 20%;
+  margin: 5%;
+  border: 1px solid #71b48d
+}
 
+.transport-info p {
+  font-size: 3.5vw; 
+}
 
 textarea {
   background-color: #f4f6f9;
@@ -105,12 +119,12 @@ textarea {
   text-decoration: underline;
 }
 
-.error {
+#error {
   color: red;
   font-weight: bold;
   max-width: 200px;
   text-align: center;
-  margin-bottom: 10px;
+  margin-bottom: 0px;
 }
 
 .link-green {
@@ -183,6 +197,7 @@ footer {
   display: flex;
   justify-content: space-around;
   background-color: #FCFCF9;
+  padding-bottom: 17%;
 }
 
 .traveleez {
@@ -581,7 +596,7 @@ footer {
   flex-direction: column;
   align-items: center;
   justify-content: center; 
-  margin-top: 100px;
+
 }
 
 .login-signup-form {
@@ -661,6 +676,18 @@ justify-content: space-around;
 
 .translate-icon-entered{
   border: 0px;
+}
+.taxi-icon-entering{
+  animation: fadeIn ease-in-out;
+  animation-duration: 0.7s;
+}
+.bus-icon-entering{
+  animation: fadeIn ease-in-out;
+  animation-duration: 1s;
+}
+.train-icon-entering{
+  animation: fadeIn ease-in-out;
+  animation-duration: 1.2s;
 }
 
 @keyframes fadeIn {

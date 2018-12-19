@@ -3033,7 +3033,7 @@ let places = [{
     'subcountry': 'Catalonia',
     'taxi': '902 90 75 08',
     'bus': 'http://www.tmb.cat/ca/home/',
-    'train': 'http://www.renfe.com/EN/viajeros/cercanias/barcelona/',
+    'train': 'www.rodalies.gencat.cat/en/horaris/',
     'picture': 'https://images.unsplash.com/photo-1523531294919-4bcd7c65e216?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80'
 
   },
