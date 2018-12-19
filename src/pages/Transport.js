@@ -40,7 +40,7 @@ class Transport extends Component {
             <section className="guide-list">
               <h2>{locationValue ? locationValueUpper : 'Enter location above'}</h2>
 
-              {!locationValue ? <div>select a city first</div> : filteredLocations.map((location, index) => {
+              {!locationValue ? <div>Select a city first</div> : filteredLocations.map((location, index) => {
                 return (
                   <div key={index} className="train-card-container">
                     <Transition timeout={4000} in={true} appear>
