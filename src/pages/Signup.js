@@ -48,7 +48,7 @@ class Signup extends Component {
 
   checkErrors = () => {
     if (this.state.error) {
-      return <div className="error">{this.state.error}</div>
+      return <p id="error">{this.state.error}</p>
     }
   }
 
@@ -56,8 +56,9 @@ class Signup extends Component {
     const { username, password } = this.state;
     return (
       <section className="login-signup-section">
+        <h3>Signup</h3>
         <div className="login-signup-container">
-        {this.checkErrors()}
+        
           <form onSubmit={this.handleFormSubmit} className="login-signup-form">
             <div className="username-container">
             <label>Username:</label>
@@ -68,9 +69,9 @@ class Signup extends Component {
             <input type="password" name="password" value={password} onChange={this.handleChange} className="login-signup-input"/>
             </div>
             <button type="submit">Signup</button>
+            {this.checkErrors()}
           </form>
         </div>
-        <p className="error">{this.state.error}</p>
         <p className="account-change">Already have an account? <br/><Link to="/login">Log in</Link></p>
       </section>
     )
