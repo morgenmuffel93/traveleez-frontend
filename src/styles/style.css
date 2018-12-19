@@ -47,6 +47,8 @@ h1 {
   font-family: 'Major Mono Display', monospace;
   padding-bottom: 3px;
   height: 60px;
+  width: 100%;
+  text-align: center;
 }
 
 h2 {
@@ -656,7 +658,7 @@ justify-content: space-around;
 }
 
 .guide-icon{
-  position: relative;
+  /*position: relative;*/
 }
 .guide-icon-entering{
   animation: fadeIn ease-in-out;
@@ -667,7 +669,7 @@ justify-content: space-around;
   border: 0px;
 }
 .translate-icon{
-  position: relative;
+  /*position: relative;*/
 }
 .translate-icon-entering{
   animation: fadeIn ease-in-out;
@@ -704,8 +706,40 @@ justify-content: space-around;
     opacity: 1;
 	}
 }
+@keyframes spin {
+  from {
+      transform:rotate(0deg);
+  }
+  to {
+      transform:rotate(360deg);
+  }
+}
 
 button:hover {
   color: white;
   background-color: #71B48D;
 }
+.loading-container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: white;
+
+}
+.loading-container img {
+  width: 89%;
+align-self: center;
+animation: spin infinite linear;
+animation-duration: 9s;
+}
+.loading {
+  display: initial;
+  position: absolute;
+  left: 117px;
+  font-size: 6vw;
+}
+
+/*Iphone 6/7/8 /*
+
+/*MAIN*/
