@@ -11,6 +11,7 @@ class Scan extends Component {
     base64: '',
     target: '',
     fullBase64: '',
+    isLoading: false,
   }
 
   toBase64(file, cb) {
@@ -44,6 +45,10 @@ class Scan extends Component {
 
   uploadHandler = () => {
     let { base64 } = this.state
+    this.setState({
+      isLoading: true,
+    })
+
     let body = {
       "requests": [
         {
@@ -62,6 +67,7 @@ class Scan extends Component {
       .then((response) => {
         this.setState({
           text: response.data.responses[0].fullTextAnnotation.text,
+          isLoading: false,
         })
       })
   }
@@ -69,15 +75,20 @@ class Scan extends Component {
   handleLanguage = (e) => {
     this.setState({
       target: e.target.value,
+
     })
   }
 
 
   translateHandler = () => {
+    this.setState({
+      isLoading: true,
+    })
     axios.post(`https://translation.googleapis.com/language/translate/v2?key=AIzaSyAkNyUzuGnqGuOtK-meyLLydVTPECloI14&q=${this.state.text}&target=${this.state.target}`)
       .then((response) => {
         this.setState({
           translation: response.data.data.translations[0].translatedText,
+          isLoading: false,
         })
       })
   }
@@ -133,6 +144,27 @@ class Scan extends Component {
           <button onClick={this.translateHandler}>Translate!</button>
         </div>
       </section>
+    }
+
+    if (this.state.isLoading) {
+      return (
+        <section class="loading-section">
+          <div class="sk-circle">
+            <div class="sk-circle1 sk-child"></div>
+            <div class="sk-circle2 sk-child"></div>
+            <div class="sk-circle3 sk-child"></div>
+            <div class="sk-circle4 sk-child"></div>
+            <div class="sk-circle5 sk-child"></div>
+            <div class="sk-circle6 sk-child"></div>
+            <div class="sk-circle7 sk-child"></div>
+            <div class="sk-circle8 sk-child"></div>
+            <div class="sk-circle9 sk-child"></div>
+            <div class="sk-circle10 sk-child"></div>
+            <div class="sk-circle11 sk-child"></div>
+            <div class="sk-circle12 sk-child"></div>
+          </div>
+        </section>
+      )
     }
 
     if (this.state.text) {
