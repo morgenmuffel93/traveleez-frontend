@@ -23,7 +23,11 @@ class Main extends Component {
   }
   render() {
     if(this.state.isLoading){
-      return <div>is Loading . . .</div>
+      return <div className="loading-container">
+        <img src={require('../images/loading.png')} alt="loading"></img>
+        <p className="loading">Loading . . .</p>
+        
+        </div>
   }
     
   
