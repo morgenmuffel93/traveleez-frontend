@@ -51,12 +51,10 @@ class Login extends Component {
     const { username, password } = this.state;
     return (
       <section className="login-signup-section">
-        <h3>Log In</h3>
+        <h3 className="login-title">Log In</h3>
         <div className="login-signup-container">
           <form onSubmit={this.handleFormSubmit} className="login-signup-form">
-            
             <div className="username-container">
-           
             <label>Username:</label>
             <input type="text" name="username" value={username} onChange={this.handleChange} className="login-signup-input" />
             </div>
@@ -64,12 +62,11 @@ class Login extends Component {
             <label>Password:</label>
             <input type="password" name="password" value={password} onChange={this.handleChange} className="login-signup-input"/>
             </div>
-            <button type="submit">Login</button>
+            <button type="submit" className="login-btn">Login</button>
             {this.checkErrors()}
           </form>
         </div>
-            <p className="error">{this.state.error}</p>
-        <p className="account-change">Not a member? <br/><Link to="/signup" className="link-green">Sign up</Link></p>
+        <p className="account-change">Not a member? <br/><Link to="/signup">Sign up</Link></p>
       </section>
     )
   }

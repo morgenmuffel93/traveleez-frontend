@@ -56,9 +56,8 @@ class Signup extends Component {
     const { username, password } = this.state;
     return (
       <section className="login-signup-section">
-        <h3>Signup</h3>
+        <h3 className="login-title">Signup</h3>
         <div className="login-signup-container">
-        
           <form onSubmit={this.handleFormSubmit} className="login-signup-form">
             <div className="username-container">
             <label>Username:</label>
@@ -68,12 +67,11 @@ class Signup extends Component {
             <label>Password:</label>
             <input type="password" name="password" value={password} onChange={this.handleChange} className="login-signup-input"/>
             </div>
-            <button type="submit">Signup</button>
+            <button type="submit" className="login-btn">Signup</button>
             {this.checkErrors()}
           </form>
         </div>
-        <p className="error">{this.state.error}</p>
-        <p className="account-change">Already have an account? <br/><Link to="/login" className="link-green">Log in</Link></p>
+        <p className="account-change">Already have an account? <br/><Link to="/login">Log in</Link></p>
       </section>
     )
   }

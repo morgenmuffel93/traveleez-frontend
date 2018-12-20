@@ -20,11 +20,8 @@ class Footer extends Component {
 
   renderIsNotLoggedIn = () => {
     return (
-      <footer>
-        <div className="traveleez">
-          Traveleez &reg;
+        <div>
       </div>
-      </footer>
     )
   }
 

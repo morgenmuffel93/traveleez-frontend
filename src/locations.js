@@ -2688,7 +2688,7 @@ let places = [{
     'picture': 'https://i.imgur.com/JggQgpd.png',
     'taxi': '985 34 66 66',
     'bus': 'https://bus.gijon.es/',
-    'train': 'http://www.renfe.com/viajeros/cercanias/asturias/catalogo/gijon_home.html',
+    'train': 'http://www.renfe.com',
   },
   {
     'country': 'Spain',

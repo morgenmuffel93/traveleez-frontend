@@ -39,7 +39,9 @@ class Main extends Component {
         {locationValue => {
           return (
       <section className="main">
+      <div className="main-title-container">
         <h1>{locationValue ? locationValue : 'traveleez'}</h1>
+        </div>
 
       <Transition timeout={4000} in={true} appear>
       {(status) =>(

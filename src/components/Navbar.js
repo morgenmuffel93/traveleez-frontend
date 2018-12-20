@@ -37,10 +37,7 @@ class Navbar extends Component {
   }
 
   renderIsNotLoggedIn = () => {
-    return <div class="login-or-signup">
-      <Link to='/login' className="link-green">Login</Link>
-      <p className="or">&nbsp;or&nbsp;</p>
-      <Link to='/signup' className="link-green">Signup</Link>
+    return <div>
     </div>
   }
 

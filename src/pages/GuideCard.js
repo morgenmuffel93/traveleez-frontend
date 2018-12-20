@@ -11,7 +11,7 @@ class GuideCard extends Component {
         <div className="card-when-container">
           <div className="card-when-info">
             <p id="card-when-text">{this.props.info.date}</p>
-            <p id="card-when-text">{this.props.info.location}</p>
+            <p id="card-when-text"><span className="span-italic">{this.props.info.location}</span></p>
           </div>
         </div>
         <div className="see-more-container">
