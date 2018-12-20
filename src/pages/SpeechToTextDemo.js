@@ -131,55 +131,48 @@ class SpeechToTextDemo extends Component {
       content = (
 
         <div className="speech-section">
-          {/* <p>Status: {listening ? 'listening...' : 'finished listening'} */}
           {buttonForListening}
-          {/* </p> */}
           <div className="current-text speech-text">
             Current:
               <textarea name="translated-box" cols="25" rows="3" placeholder="Current" value={interimText}></textarea>
           </div>
 
-            <div>
-              <div className="finalised-text speech-text">
-                Finalised Text
-                  {/* {finalisedText.map((str, index) => {
-                    return (
-                      <div key={index}>
-                        {str}
-                      </div>
-                    );
-                  })} */}
+          <div>
+            <div className="finalised-text speech-text">
+              Finalised Text
               <textarea name="translated-box" cols="25" rows="5" placeholder="Final text" value={this.state.finalisedText} onChange={this.handleWriting}></textarea>
-              <button id="reset-button" onClick={this.resetTranslate}>Reset</button>
-              <button onClick={this.readOutLoud} id="play-btn">Play &#9654;</button>
+              <div className="speech-btns">
+                <button id="reset-button" onClick={this.resetTranslate}>Reset</button>
+                <button onClick={this.readOutLoud} id="play-btn">Play &#9654;</button>
               </div>
-              <div className="lang-opt-container">
-                <select name="language" id="lang-selector" onChange={this.handleLanguage}>
-                  <option disabled selected>Select language</option>
-                  <option value="es-es">Spanish</option>
-                  <option value="en-gb">English</option>
-                  <option value="de-de">German</option>
-                  <option value="ca-es">Catalan</option>
-                </select>
-                <button onClick={this.translateHandler}>Translate!</button>
-                
+            </div>
+            <div className="lang-opt-container">
+              <select name="language" id="lang-selector" onChange={this.handleLanguage}>
+                <option disabled selected>Select language</option>
+                <option value="es-es">Spanish</option>
+                <option value="en-gb">English</option>
+                <option value="de-de">German</option>
+                <option value="ca-es">Catalan</option>
+              </select>
+              <button onClick={this.translateHandler}>Translate!</button>
 
-              </div>
-              <audio controls="controls" src={this.state.readBack} autoPlay="autoplay">
-              </audio>
-              
-            </div>
-            </div>
-            );
-          }
-      
-          return (
-            <div>
-              {content}
-            </div>
 
-            );
-          }
-        }
-        
+            </div>
+            <audio controls="controls" src={this.state.readBack} autoPlay="autoplay">
+            </audio>
+
+          </div>
+        </div>
+      );
+    }
+
+    return (
+      <div>
+        {content}
+      </div>
+
+    );
+  }
+}
+
 export default SpeechToTextDemo;

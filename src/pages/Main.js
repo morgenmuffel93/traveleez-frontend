@@ -86,9 +86,4 @@ class Main extends Component {
   }
 }
  export default Main; 
-//  <InfoCard img="">Taxi</InfoCard>
-//  <InfoCard img="">Restaurants</InfoCard>
-//  <InfoCard img="">Museums</InfoCard>
-//  <InfoCard img="">Accomodation</InfoCard>
-//  <InfoCard img="">Night life</InfoCard>
-// 
+ 

@@ -133,7 +133,7 @@ class Scan extends Component {
       return <section className="scan-section translate-section">
         <h3>Voilà!</h3>
         <img src={this.state.fullBase64} alt="" className="base64-img" />
-        <textarea name="translated-box" cols="25" rows="3" placeholder="Translation here" value={this.state.translation}></textarea>
+        <textarea name="translated-box" cols="25" rows="4" placeholder="Translation here" value={this.state.translation}></textarea>
         <div className="lang-opt-container">
           <select name="language" id="lang-selector" onChange={this.handleLanguage}>
             <option disabled selected>Select language</option>
@@ -158,9 +158,9 @@ class Scan extends Component {
 
     if (this.state.text) {
       return <section className="scan-section translate-section">
-        <h3>Check the text and fix if necessary</h3>
+        <h3>Check and fix if necessary</h3>
         <img src={this.state.fullBase64} alt="" className="base64-img" />
-        <textarea name="translated-box" cols="25" rows="3" placeholder="Translation here" value={this.state.text} onChange={this.handleWriting}></textarea>
+        <textarea name="translated-box" cols="25" rows="4" placeholder="Translation here" value={this.state.text} onChange={this.handleWriting}></textarea>
         <div className="lang-opt-container">
           <select name="language" id="lang-selector" onChange={this.handleLanguage}>
             <option disabled selected>Select language</option>

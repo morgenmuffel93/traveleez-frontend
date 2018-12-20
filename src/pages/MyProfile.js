@@ -10,6 +10,8 @@ class Profile extends Component {
     user: {},
     isLoading: true,
     isEditing: false,
+    isInInfo: true,
+    isInGuides: false,
     info: {
       expertise: '',
       phone: '',
@@ -121,6 +123,102 @@ class Profile extends Component {
       })
   }
 
+  showInfoOrGuides = () => {
+    if (this.state.isInInfo && this.state.isEditing) {
+      const { user: { email, phone, expertise } } = this.state;
+
+      return (
+        <form onSubmit={this.handleEditProfile}>
+          <div className="my-info">
+            <span className="bold-span">Your expertise:</span>
+            <input type="text" value={expertise} onChange={this.handleWriting} name='expertise' />
+          </div>
+          <div className="my-info">
+            <span className="bold-span">E-mail:</span>
+            <input type="text" value={email} onChange={this.handleWriting} name='email' />
+          </div>
+          <div className="my-info">
+            <span className="bold-span">Phone:</span>
+            <input type="text" value={phone} onChange={this.handleWriting} name='phone' />
+          </div>
+          <button type="submit" className="edit-profile-btn">Submit</button>
+        </form>
+      )
+    } else if (this.state.isInInfo) {
+      return (
+        <div>
+          <div className="edit-info-container">
+          <button onClick={this.changeToEdit} className="edit-profile-info">&#9998;</button>
+          </div>
+        <div className="my-info">
+          <span className="bold-span">Your expertise:</span>
+          <p className="info-text">{this.state.user.expertise}</p>
+        </div>
+        <div className="my-info">
+          <span className="bold-span">E-mail:</span>
+          <p className="info-text">{this.state.user.email}</p>
+        </div>
+        <div>
+          <span className="bold-span">Phone:</span>
+          <p className="info-text">{this.state.user.phone}</p>
+        </div>
+      </div>
+      )
+    } else if (this.state.isInGuides) {
+      return (
+        <div className="my-guides">
+        <Link to="/guides-list/create" className="btn edit-profile-info">Create</Link>
+        <div class="guide-list-container">
+          {this.state.user.guides.map((guide, index) => {
+            return <div key={index} className="guide-card-container">
+              <GuideCard key={guide._id} info={guide} />
+              <div className="delete-edit-container">
+                <Link to={`/guides-list/edit/${guide._id}`} className="btn">&#9998;</Link>
+                <form onSubmit={this.onSubmit} id={guide._id}>
+                  <button type="submit">&#10006;</button>
+                </form>
+              </div>
+            </div>
+          })}
+        </div>
+      </div>
+      )
+    }
+  }
+
+  showInfo = () => {
+   
+    this.setState({
+      isInInfo: true,
+      isInGuides: false,
+    })
+  }
+
+  showGuides = () => {
+    this.setState({
+      isInInfo: false,
+      isInGuides: true,
+    })
+  }
+
+  displayButtons = () => {
+    if (this.state.isInInfo) {
+      return (
+        <div class="profile-options">
+        <div onClick={this.showInfo} className="selected-profile option-profile">Info</div>
+        <div onClick={this.showGuides} className="option-profile">Guides [{this.state.user.guides.length}]</div>
+      </div>
+      )
+    } else if (this.state.isInGuides) {
+      return (
+        <div class="profile-options">
+        <div onClick={this.showInfo} className="option-profile">Info</div>
+        <div onClick={this.showGuides} className="selected-profile option-profile">Guides [{this.state.user.guides.length}]</div>
+      </div>
+      )
+    }
+  }
+
   render() {
 
     if (this.state.isLoading) {
@@ -129,25 +227,9 @@ class Profile extends Component {
 
     return (
       <section className="my-profile">
-        <h2>Your profile <button onClick={this.changeToEdit}>&#9998;</button></h2>
-        {this.handleEditing()}
-        <div className="my-guides">
-          <h3 className="my-guides-title">Your guides [{this.state.user.guides.length}]</h3>
-          <Link to="/guides-list/create" className="btn">Create</Link>
-          <div class="guide-list-container">
-            {this.state.user.guides.map((guide, index) => {
-              return <div key={index} className="guide-card-container">
-                <GuideCard key={guide._id} info={guide} />
-                <div className="delete-edit-container">
-                  <Link to={`/guides-list/edit/${guide._id}`} className="btn">&#9998;</Link>
-                  <form onSubmit={this.onSubmit} id={guide._id}>
-                    <button type="submit">&#10006;</button>
-                  </form>
-                </div>
-              </div>
-            })}
-          </div>
-        </div>
+        <h2>Your profile</h2>
+        {this.displayButtons()}
+        {this.showInfoOrGuides()}
       </section>
     );
   }

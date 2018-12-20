@@ -71,7 +71,10 @@ class AuthProvider extends Component {
 
   render() {
     if (this.state.isLoading) {
-      return <div>Loading....</div>
+      return <section class="loading-container">
+      <img src={require('../images/loading.png')} alt="loading"></img>
+      <p className="loading">Loading . . .</p>
+      </section>
     }
     return <div>
       <Provider value={{

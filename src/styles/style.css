@@ -456,8 +456,9 @@ footer {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 30px;
+  padding-top: 35px;
 }
+
 .speech-section button {
   color: #71b48d;
   border: 2px solid #71b48d;
@@ -469,33 +470,49 @@ footer {
 }
 
 #play-btn {
-  margin-left: 126px;
-  border-radius: 20%;
+  border-radius: 20px;
   border-color: #00000040;
   box-shadow: inset 1px 1px 1px 1px #00000021;
   color: white;
   background: #71b48d;
+  margin-left: 15px;
+}
+
+.speech-btns {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 7px;
 }
 
 #reset-button {
   color: red;
-  border-radius: 20%;
+  border-radius: 20px;
   border-color: #00000040;
   box-shadow: inset 1px 1px 1px 1px #00000021;
   color: white;
   background: #e03131;
   border: 2px solid red;
-  margin-left: 4px;
+}
+
+.option-profile {
+  width: 40%;
+  text-align: center;
+  padding-bottom: 5px;
 }
 
 /* My profile section */
 
 .my-profile h2 {
-  margin-bottom: 13%;
+  margin-bottom: 8%;
   padding-bottom: 1.5%;
   border-bottom: 3px double #0000001a;
 }
 
+.profile-options {
+  display: flex;
+  justify-content: space-around;
+}
 
 .my-info {
   margin: 12px 0;
@@ -529,6 +546,19 @@ footer {
   justify-content: space-around;
 }
 
+.selected-profile {
+  border-bottom: 3px dotted #71B48D;
+}
+
+.edit-profile-info {
+  margin-bottom: 5px;
+    margin-top: 15px;
+}
+
+.edit-info-container  {
+  width: 100%;
+  text-align: center;
+}
 
 
 /* List of user's own guides in MY profile */
@@ -896,7 +926,6 @@ animation-duration: 9s;
 
 
 /*MAIN*/
-<<<<<<< HEAD
   /*portrait*/
 @media screen and (min-width: 325px){
   .info-card{width: 100px;
@@ -957,7 +986,6 @@ animation-duration: 9s;
       font-size: 50px;
      }
     }
-=======
 
 .login-signup-section {
   padding: 100px 20px 74px 20px;
@@ -980,4 +1008,3 @@ animation-duration: 9s;
   color: white;
   font-weight: bold;
 }
->>>>>>> 0ff53e5a6cf7e5c5e9b082d6c23759c2c1d7ad39
