@@ -742,4 +742,65 @@ animation-duration: 9s;
 
 /*Iphone 6/7/8 /*
 
+
 /*MAIN*/
+  /*portrait*/
+@media screen and (min-width: 325px){
+  .info-card{width: 100px;
+    width: 100px;
+    height: 100px;
+    margin-bottom: 80px;
+    text-align: center;
+    padding: 5%;
+    border-radius: 10%;
+    box-shadow: 0px 2px 17px 1px #00000014;
+    background-color: #FCFCF9;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .main{
+    height: 100vh;
+  }
+
+ }
+ /*landScape*/
+ /*IPAD*/
+
+ @media screen and (min-width: 768px){
+  .info-card{
+    width: 200px;
+  height: 200px;
+  margin-bottom: 80px;
+  text-align: center;
+  padding: 5%;
+  border-radius: 10%;
+  box-shadow: 0px 2px 17px 1px #00000014;
+  background-color: #FCFCF9;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  }
+  .info-card p {
+    font-size: 30px;
+  }
+  footer {
+    padding-bottom: 8%; 
+  }
+
+
+ }
+
+ /*IPad pro */
+ @media screen and (min-width: 1023px){
+     .info-card {
+    width: 330px;
+    height: 20px;
+  }
+     
+     .info-card p {
+      font-size: 50px;
+     }
+    }

@@ -34,6 +34,7 @@ class Scan extends Component {
       this.toBase64(this.state.selectedFile, (result) => {
         let base64String = result.split(",")
 
+
         this.setState({
           base64: base64String[1],
           fullBase64: result,

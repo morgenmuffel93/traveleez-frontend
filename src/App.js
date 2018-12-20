@@ -40,7 +40,7 @@ class App extends Component {
 
     return (
       <LocationsProvider value={this.state.searchValue}>
-        <AuthProvider>
+      <AuthProvider>
             <Navbar onUpdate={this.updateLocation} />
             <Switch>
                 <PrivateRoute exact path="/" component={Main} />
